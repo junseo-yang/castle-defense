@@ -7,18 +7,30 @@ namespace CastleDefense
     public class Game1 : Game
     {
         private GraphicsDeviceManager _graphics;
-        private SpriteBatch _spriteBatch;
+        public SpriteBatch _spriteBatch;
+
+        /* Scene */
+        private StartScene startScene;
+        private HelpScene helpScene;
+        private ActionScene actionScene;
+        public const int QUIT = 4;
 
         public Game1()
         {
             _graphics = new GraphicsDeviceManager(this);
+            _graphics.PreferredBackBufferWidth = 1000;
+            _graphics.PreferredBackBufferHeight = 500;
             Content.RootDirectory = "Content";
+            _graphics.GraphicsProfile = GraphicsProfile.HiDef;
             IsMouseVisible = true;
         }
 
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
+
+            Shared.stage = new Vector2(_graphics.PreferredBackBufferWidth,
+                _graphics.PreferredBackBufferHeight);
 
             base.Initialize();
         }
@@ -28,14 +40,68 @@ namespace CastleDefense
             _spriteBatch = new SpriteBatch(GraphicsDevice);
 
             // TODO: use this.Content to load your game content here
+
+            _spriteBatch = new SpriteBatch(GraphicsDevice);
+
+            // TODO: use this.Content to load your game content here
+
+            /* Scene */
+            startScene = new StartScene(this);
+            this.Components.Add(startScene);
+
+            helpScene = new HelpScene(this);
+            this.Components.Add(helpScene);
+
+            actionScene = new ActionScene(this);
+            this.Components.Add(actionScene);
+
+            startScene.show();
+        }
+
+        private void hideAllScenes()
+        {
+            foreach (GameScene item in Components)
+            {
+                item.hide();
+            }
         }
 
         protected override void Update(GameTime gameTime)
         {
-            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
-                Exit();
+            //if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
+            //    Exit();
 
             // TODO: Add your update logic here
+
+            int selectedIndex = 0;
+            KeyboardState ks = Keyboard.GetState();
+            if (startScene.Enabled)
+            {
+                selectedIndex = startScene.Menu.SelectedIndex;
+                if (selectedIndex == 0 && ks.IsKeyDown(Keys.Enter))
+                {
+                    startScene.hide();
+                    actionScene.show();
+                }
+                else if (selectedIndex == 1 && ks.IsKeyDown(Keys.Enter))
+                {
+                    startScene.hide();
+                    helpScene.show();
+                }
+                else if (selectedIndex == QUIT && ks.IsKeyDown(Keys.Enter))
+                {
+                    Exit();
+                }
+            }
+
+            if (helpScene.Enabled || actionScene.Enabled)
+            {
+                if (ks.IsKeyDown(Keys.Escape))
+                {
+                    hideAllScenes();
+                    startScene.show();
+                }
+            }
 
             base.Update(gameTime);
         }
