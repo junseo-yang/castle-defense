@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using System.Diagnostics;
 
 namespace CastleDefense
 {
@@ -18,8 +19,8 @@ namespace CastleDefense
         public Game1()
         {
             _graphics = new GraphicsDeviceManager(this);
-            _graphics.PreferredBackBufferWidth = 1000;
-            _graphics.PreferredBackBufferHeight = 500;
+            _graphics.PreferredBackBufferWidth = 1300;
+            _graphics.PreferredBackBufferHeight = 600;
             Content.RootDirectory = "Content";
             _graphics.GraphicsProfile = GraphicsProfile.HiDef;
             IsMouseVisible = true;
@@ -72,6 +73,10 @@ namespace CastleDefense
             //    Exit();
 
             // TODO: Add your update logic here
+
+            MouseState ms = Mouse.GetState();
+
+            Debug.WriteLine($"x: {ms.X} y: {ms.Y}");
 
             int selectedIndex = 0;
             KeyboardState ks = Keyboard.GetState();

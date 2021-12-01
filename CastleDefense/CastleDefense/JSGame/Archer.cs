@@ -9,53 +9,62 @@ using Microsoft.Xna.Framework.Input;
 
 namespace CastleDefense
 {
-    public class Archer : DrawableGameComponent
+    public class Archer : JSDrawableGameComponent
     {
-        private SpriteBatch spriteBatch;
-        private Texture2D tex;
-        public Vector2 position;
-        private Vector2 speed;
-
+        /* Animation */
+        // dimension of a frame
+        private Vector2 dimension;
+        // list of srcRect
         private Rectangle[] frames;
-        public Vector2 origin;
+        // draw frame index, list has indexer
+        private int frameIndex = -1;
 
-        public float rotation = 0f;
-        private float scale = 1.0f;
+        // fixed delay
+        private int delay = 3;
+        // fluctulating value
+        private int delayCounter;
+
+        private const int ROW = 4;
+        private const int COL = 13;
 
         private MouseState oldMouseState;
 
-        private int delay = 1;
-        public int frameIndexCol = 0;
-        private int delayCounter = 0;
-
-        private const int COL = 10;
-
-        public Archer(Game game,
-       SpriteBatch spriteBatch,
-       Texture2D tex) : base(game)
+        public Archer(Game game): base(game)
         {
-            this.spriteBatch = spriteBatch;
-            this.tex = tex;
-            this.position = new Vector2((Shared.stage.X - ((tex.Width / COL)/2)), ((Shared.stage.Y - tex.Height) / 2));
-            this.speed = new Vector2(0, 5);
+            Game1 g = (Game1)game;
+
+            spriteBatch = g._spriteBatch;
+
+            texture2D = g.Content.Load<Texture2D>("images/Archer");
+
+            position = new Vector2(Shared.stage.X - 310, Shared.stage.Y - 135);
+
+            this.dimension = new Vector2(texture2D.Width / COL, texture2D.Height / ROW);
+
+            origin = new Vector2((texture2D.Width / COL) / 2, texture2D.Height / 2);
+
+            CreateFrames();
+        }
+
+        private void CreateFrames()
+        {
             frames = new Rectangle[COL];
             for (int i = 0; i < COL; i++)
             {
-                this.frames[i] = new Rectangle(i * (tex.Width / COL), 0, (tex.Width / COL), tex.Height);
+                frames[i] = new Rectangle(i * (int)dimension.X, (int)dimension.Y, (int)dimension.X, (int)dimension.Y);
             }
-            this.origin = new Vector2((tex.Width / COL) / 2, tex.Height / 2);
         }
 
         public override void Draw(GameTime gameTime)
         {
             spriteBatch.Begin();
-            if (frameIndexCol > 0)
+            if (frameIndex > 0)
             {
-                spriteBatch.Draw(tex, position, frames[frameIndexCol], Color.White, rotation, origin, scale, SpriteEffects.None, 0);
+                spriteBatch.Draw(texture2D, position, frames[frameIndex], Color.White, rotation, origin, scale, SpriteEffects.None, 0);
             }
             else
             {
-                spriteBatch.Draw(tex, position, frames[0], Color.White, rotation, origin, scale, SpriteEffects.None, 0);
+                spriteBatch.Draw(texture2D, position, frames[0], Color.White, rotation, origin, scale, SpriteEffects.None, 0);
             }
             spriteBatch.End();
 
@@ -64,48 +73,38 @@ namespace CastleDefense
 
         public override void Update(GameTime gameTime)
         {
-            KeyboardState ks = Keyboard.GetState();
-            if (ks.IsKeyDown(Keys.Up))
-            {
-                position -= speed;
-                if (position.Y < tex.Height/2)
-                {
-                    position.Y = tex.Height / 2;
-                }
-            }
-            if (ks.IsKeyDown(Keys.Down))
-            {
-                position += speed;
-                if (position.Y > Shared.stage.Y - tex.Height / 2)
-                {
-                    position.Y = Shared.stage.Y - tex.Height / 2;
-                }
-            }
+            //KeyboardState ks = Keyboard.GetState();
+            //if (ks.IsKeyDown(Keys.Up))
+            //{
+            //    position -= speed;
+            //    if (position.Y < tex.Height/2)
+            //    {
+            //        position.Y = tex.Height / 2;
+            //    }
+            //}
+            //if (ks.IsKeyDown(Keys.Down))
+            //{
+            //    position += speed;
+            //    if (position.Y > Shared.stage.Y - tex.Height / 2)
+            //    {
+            //        position.Y = Shared.stage.Y - tex.Height / 2;
+            //    }
+            //}
 
 
             MouseState ms = Mouse.GetState();
-            float xDiff = ms.X - position.X;
-            float yDiff = ms.Y - position.Y;
-            if (xDiff < 0)
-            {
-                rotation = (float)Math.Atan(yDiff / xDiff) + (float)Math.PI + (float)Math.PI / 2;
-                if (ms.LeftButton == ButtonState.Pressed && oldMouseState.LeftButton == ButtonState.Released && frameIndexCol == 0)
-                {
-                        frameIndexCol++;
-                }
-            }
-
-            if (frameIndexCol != 0)
+            
+            if (frameIndex != 0)
             {
                 if (delayCounter >= delay)
                 {
-                    frameIndexCol++;
+                    frameIndex++;
                     delayCounter = 0;
                 }
                 delayCounter++;
-                if (frameIndexCol == COL)
+                if (frameIndex == COL)
                 {
-                    frameIndexCol = 0;
+                    frameIndex = 0;
                 }
             }
             oldMouseState = ms;
