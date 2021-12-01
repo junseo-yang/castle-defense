@@ -13,7 +13,7 @@ namespace CastleDefense
         /* Scene */
         private StartScene startScene;
         private HelpScene helpScene;
-        private ActionScene actionScene;
+        public ActionScene actionScene;
         public const int QUIT = 4;
 
         public Game1()
