@@ -74,9 +74,9 @@ namespace CastleDefense
 
             // TODO: Add your update logic here
 
-            MouseState ms = Mouse.GetState();
+            //MouseState ms = Mouse.GetState();
 
-            Debug.WriteLine($"x: {ms.X} y: {ms.Y}");
+            //Debug.WriteLine($"x: {ms.X} y: {ms.Y}");
 
             int selectedIndex = 0;
             KeyboardState ks = Keyboard.GetState();
