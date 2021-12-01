@@ -20,7 +20,7 @@ namespace CastleDefense
         private int frameIndex = -1;
 
         // fixed delay
-        private int delay = 3;
+        private int delay = 5;
         // fluctulating value
         private int delayCounter;
 
@@ -73,41 +73,41 @@ namespace CastleDefense
 
         public override void Update(GameTime gameTime)
         {
-            //KeyboardState ks = Keyboard.GetState();
-            //if (ks.IsKeyDown(Keys.Up))
-            //{
-            //    position -= speed;
-            //    if (position.Y < tex.Height/2)
-            //    {
-            //        position.Y = tex.Height / 2;
-            //    }
-            //}
-            //if (ks.IsKeyDown(Keys.Down))
-            //{
-            //    position += speed;
-            //    if (position.Y > Shared.stage.Y - tex.Height / 2)
-            //    {
-            //        position.Y = Shared.stage.Y - tex.Height / 2;
-            //    }
-            //}
-
-
             MouseState ms = Mouse.GetState();
-            
-            if (frameIndex != 0)
+
+            if (ms.LeftButton == ButtonState.Pressed)
             {
-                if (delayCounter >= delay)
+                if (frameIndex < 8)
                 {
-                    frameIndex++;
-                    delayCounter = 0;
-                }
-                delayCounter++;
-                if (frameIndex == COL)
-                {
-                    frameIndex = 0;
+                    if (delayCounter >= delay)
+                    {
+                        frameIndex++;
+                        delayCounter = 0;
+                    }
+                    delayCounter++;
                 }
             }
-            oldMouseState = ms;
+            if (ms.LeftButton == ButtonState.Released)
+            {
+                if (frameIndex >= 8)
+                {
+                    if (delayCounter >= delay)
+                    {
+                        frameIndex++;
+                        delayCounter = 0;
+                    }
+                    delayCounter++;
+                    if (frameIndex >= COL)
+                    {
+                        frameIndex = -1;
+                    }
+                }
+            }
+            // Cancel
+            if (frameIndex < 8 && ms.LeftButton == ButtonState.Released)
+            {
+                frameIndex = -1;
+            }
 
             base.Update(gameTime);
         }
