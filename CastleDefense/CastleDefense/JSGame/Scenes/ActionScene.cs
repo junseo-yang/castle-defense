@@ -13,7 +13,6 @@ namespace CastleDefense
     public class ActionScene : GameScene
     {
         private SpriteBatch spriteBatch;
-        private Archer archer;
         private MouseState oldMouseState;
         private KeyboardState oldKeyboardState;
 
@@ -27,13 +26,10 @@ namespace CastleDefense
 
             arrowSound = g.Content.Load<SoundEffect>("sounds/shoot");
 
-            Texture2D texCastle = g.Content.Load<Texture2D>("images/Castle/Castle1");
-            Castle castle = new Castle(game, spriteBatch, texCastle);
-
-            Texture2D texArcher = g.Content.Load<Texture2D>("images/Archer");
-            archer = new Archer(game, spriteBatch, texArcher);
-
+            Castle castle = new Castle(game);
             this.SceneComponents.Add(castle);
+
+            Archer archer = new Archer(game);            
             this.SceneComponents.Add(archer);
 
             /* Enemy */
