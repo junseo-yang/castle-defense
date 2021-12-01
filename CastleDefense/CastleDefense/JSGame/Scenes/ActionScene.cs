@@ -12,12 +12,7 @@ namespace CastleDefense
 {
     public class ActionScene : GameScene
     {
-        private SpriteBatch spriteBatch;
-        private MouseState oldMouseState;
-        private KeyboardState oldKeyboardState;
-
         private SoundEffect arrowSound;
-
 
         public ActionScene(Game game) : base(game)
         {
@@ -32,15 +27,12 @@ namespace CastleDefense
             Archer archer = new Archer(game);            
             this.SceneComponents.Add(archer);
 
-            /* Enemy */
-            Texture2D texEnemy1 = g.Content.Load<Texture2D>("images/Enemy/01Wolf");
-            Enemy e1 = new Enemy(game, texEnemy1);
-
-
-            Texture2D texEnemy2 = g.Content.Load<Texture2D>("images/Enemy/02RedBat");
-            Enemy e2 = new Enemy(game, texEnemy2);
-            this.SceneComponents.Add(e2);
-            this.SceneComponents.Add(e1);
+            EnemyGenerator enemyGenerator = new EnemyGenerator(game);
+            this.SceneComponents.Add(enemyGenerator);
+            foreach (var item in enemyGenerator.Enemies)
+            {
+                this.SceneComponents.Add(item);
+            }
         }
 
         public override void Update(GameTime gameTime)
