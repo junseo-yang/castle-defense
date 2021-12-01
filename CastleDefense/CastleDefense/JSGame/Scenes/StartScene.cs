@@ -13,13 +13,12 @@ namespace CastleDefense
         private MenuComponent menu;
         public MenuComponent Menu { get => menu; set => menu = value; }
 
-        private SpriteBatch spriteBatch;
-
         string[] menuItems = { "Start game", "Help", "High Score", "Credit", "Quit" };
 
         public StartScene(Game game) : base(game)
         {
             Game1 g = (Game1)game;
+
             spriteBatch = g._spriteBatch;
             SpriteFont regularFont = g.Content.Load<SpriteFont>("fonts/regularFont");
             SpriteFont hilightFont = g.Content.Load<SpriteFont>("fonts/hilightFont");

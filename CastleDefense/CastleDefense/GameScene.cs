@@ -9,6 +9,9 @@ namespace CastleDefense
 {
     public abstract class GameScene : DrawableGameComponent
     {
+        public SpriteBatch spriteBatch;
+        public Texture2D texture2D;
+
         public List<GameComponent> SceneComponents { get; set; }
 
         public virtual void show()
@@ -30,12 +33,12 @@ namespace CastleDefense
         public override void Draw(GameTime gameTime)
         {
             DrawableGameComponent comp = null;
-            foreach(GameComponent item in SceneComponents)
+            foreach (GameComponent item in SceneComponents)
             {
-                if(item is DrawableGameComponent)
+                if (item is DrawableGameComponent)
                 {
                     comp = (DrawableGameComponent)item;
-                    if(comp.Visible)
+                    if (comp.Visible)
                     {
                         comp.Draw(gameTime);
                     }
@@ -48,9 +51,9 @@ namespace CastleDefense
 
         public override void Update(GameTime gameTime)
         {
-            foreach(GameComponent item in SceneComponents)
+            foreach (GameComponent item in SceneComponents)
             {
-                if(item.Enabled)
+                if (item.Enabled)
                 {
                     item.Update(gameTime);
                 }
