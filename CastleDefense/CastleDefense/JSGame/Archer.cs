@@ -17,14 +17,13 @@ namespace CastleDefense
         // list of srcRect
         private Rectangle[] frames;
         // draw frame index, list has indexer
-        private int frameIndex = -1;
+        public int frameIndex = -1;
 
         // fixed delay
         private int delay = 5;
         // fluctulating value
         private int delayCounter;
 
-        private const int ROW = 4;
         private const int COL = 13;
 
         private MouseState oldMouseState;
@@ -37,9 +36,7 @@ namespace CastleDefense
 
             texture2D = g.Content.Load<Texture2D>("images/Archer");
 
-            position = new Vector2(Shared.stage.X - 310, Shared.stage.Y - 135);
-
-            this.dimension = new Vector2(texture2D.Width / COL, texture2D.Height / ROW);
+            position = new Vector2(990, 365);
 
             origin = new Vector2((texture2D.Width / COL) / 2, texture2D.Height / 2);
 
@@ -51,7 +48,7 @@ namespace CastleDefense
             frames = new Rectangle[COL];
             for (int i = 0; i < COL; i++)
             {
-                frames[i] = new Rectangle(i * (int)dimension.X, (int)dimension.Y, (int)dimension.X, (int)dimension.Y);
+                frames[i] = new Rectangle(i * (texture2D.Width / COL), 0, texture2D.Width / COL, texture2D.Height);
             }
         }
 
