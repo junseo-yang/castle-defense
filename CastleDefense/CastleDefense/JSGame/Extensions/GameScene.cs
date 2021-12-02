@@ -45,7 +45,6 @@ namespace CastleDefense
                 }
             }
 
-
             base.Draw(gameTime);
         }
 
