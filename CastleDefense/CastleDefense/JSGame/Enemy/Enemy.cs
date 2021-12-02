@@ -7,7 +7,7 @@ using Microsoft.Xna.Framework.Input;
 
 namespace CastleDefense
 {
-    public class Enemy : DrawableGameComponent
+    public class Enemy : JSDrawableGameComponent
     {
         /* Declare variables for Draw*/
         private SpriteBatch spriteBatch;
