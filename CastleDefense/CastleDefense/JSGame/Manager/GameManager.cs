@@ -13,18 +13,27 @@ namespace CastleDefense
 
         public List<GameComponent> ManagerComponents { get; set; }
 
+        Castle castle;
+        Archer archer;
         EnemyManager enemyManager;
+        public ArrowManager arrowManager;
+
+        MouseState oldMouseState;
+
+        Game1 g;
 
         public GameManager(Game game) : base(game)
         {
+            g = (Game1)game;
+
             ManagerComponents = new List<GameComponent>();
 
             level = 1;
 
-            Castle castle = new Castle(game);
+            castle = new Castle(game);
             this.ManagerComponents.Add(castle);
 
-            Archer archer = new Archer(game);
+            archer = new Archer(game);
             this.ManagerComponents.Add(archer);
 
             enemyManager = new EnemyManager(game);
@@ -32,6 +41,9 @@ namespace CastleDefense
             {
                 ManagerComponents.Add(item);
             }
+
+            arrowManager = new ArrowManager(game, archer);
+            this.ManagerComponents.Add(arrowManager);
         }
 
         public override void Draw(GameTime gameTime)
@@ -62,24 +74,35 @@ namespace CastleDefense
                 }
             }
 
-            // Test
-            MouseState ms = Mouse.GetState();
-
-            if (ms.LeftButton == ButtonState.Pressed)
+            // Draw Arrow
+            if (arrowManager.Arrows.Count != 0)
             {
-                foreach (JSDrawableGameComponent item in enemyManager.Enemies)
+                foreach (var item in arrowManager.Arrows)
                 {
-                    item.Hide();
-                }
-
-            }
-            if (ms.RightButton == ButtonState.Pressed)
-            {
-                foreach (JSDrawableGameComponent item in enemyManager.Enemies)
-                {
-                    item.Show();
+                    ManagerComponents.Add(item);
                 }
             }
+
+
+            // Enemy dissapear Test
+            //MouseState ms = Mouse.GetState();
+
+            //if (ms.LeftButton == ButtonState.Pressed)
+            //{
+            //    foreach (JSDrawableGameComponent item in enemyManager.Enemies)
+            //    {
+            //        item.Hide();
+            //    }
+
+            //}
+            //if (ms.RightButton == ButtonState.Pressed)
+            //{
+            //    foreach (JSDrawableGameComponent item in enemyManager.Enemies)
+            //    {
+            //        item.Show();
+            //    }
+            //}
+
 
 
             base.Update(gameTime);
