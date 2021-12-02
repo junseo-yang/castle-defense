@@ -21,18 +21,8 @@ namespace CastleDefense
 
             arrowSound = g.Content.Load<SoundEffect>("sounds/shoot");
 
-            Castle castle = new Castle(game);
-            this.SceneComponents.Add(castle);
-
-            Archer archer = new Archer(game);            
-            this.SceneComponents.Add(archer);
-
-            EnemyGenerator enemyGenerator = new EnemyGenerator(game);
-            this.SceneComponents.Add(enemyGenerator);
-            foreach (var item in enemyGenerator.Enemies)
-            {
-                this.SceneComponents.Add(item);
-            }
+            GameManager gameManager = new GameManager(game);
+            this.SceneComponents.Add(gameManager);
         }
 
         public override void Update(GameTime gameTime)
