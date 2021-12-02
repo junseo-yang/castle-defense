@@ -75,13 +75,13 @@ namespace CastleDefense
             }
 
             // Draw Arrow
-            if (arrowManager.Arrows.Count != 0)
-            {
-                foreach (var item in arrowManager.Arrows)
-                {
-                    ManagerComponents.Add(item);
-                }
-            }
+            //if (arrowManager.Arrows.Count != 0)
+            //{
+            //    foreach (var item in arrowManager.Arrows)
+            //    {
+            //        ManagerComponents.Add(item);
+            //    }
+            //}
 
 
             // Enemy dissapear Test
