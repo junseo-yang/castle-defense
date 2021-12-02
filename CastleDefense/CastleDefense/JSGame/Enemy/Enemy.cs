@@ -10,9 +10,7 @@ namespace CastleDefense
     public class Enemy : JSDrawableGameComponent
     {
         /* Declare variables for Draw*/
-        private SpriteBatch spriteBatch;
         private Texture2D tex;
-        private Vector2 position;
         private float scale = 0.2f;
 
 
