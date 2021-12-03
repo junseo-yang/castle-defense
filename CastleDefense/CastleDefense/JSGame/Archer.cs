@@ -9,8 +9,20 @@ using Microsoft.Xna.Framework.Input;
 
 namespace CastleDefense
 {
-    public class Archer : JSDrawableGameComponent
+    public class Archer : Entity
     {
+        private static PlayerShip instance;
+        public static PlayerShip Instance
+        {
+            get
+            {
+                if (instance == null)
+                    instance = new PlayerShip();
+
+                return instance;
+            }
+        }
+
         /* Animation */
         // dimension of a frame
         private Vector2 dimension;
