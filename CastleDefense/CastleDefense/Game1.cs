@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using Microsoft.Xna.Framework.Media;
 using System.Diagnostics;
 
 namespace CastleDefense
@@ -40,11 +41,19 @@ namespace CastleDefense
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            // TODO: use this.Content to load your game content here
+            // TODO: use this.Content to load your game content
 
-            _spriteBatch = new SpriteBatch(GraphicsDevice);
+            Art.Load(Content);
+            Sound.Load(Content);
 
-            // TODO: use this.Content to load your game content here
+            EntityManager.Add(Archer.Instance);
+
+            try
+            {
+                MediaPlayer.IsRepeating = true;
+                MediaPlayer.Play(Sound.Music);
+            }
+            catch { }
 
             /* Scene */
             startScene = new StartScene(this);
