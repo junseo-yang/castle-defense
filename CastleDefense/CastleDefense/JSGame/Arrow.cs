@@ -7,27 +7,36 @@ using System.Text;
 
 namespace CastleDefense
 {
-    public class Arrow : JSDrawableGameComponent
+    public class Arrow : Entity
     {
         private int timeCounter = 0;
         private int existTime = 60;
 
-        public Arrow(Game game,
-            float rotation,
-            Vector2 speed) : base(game)
+        public Arrow(Vector2 position, Vector2 velocity)
         {
-            Game1 g = (Game1)game;
+            image = Art.Arrow;
+            Position = position;
+            Velocity = velocity;
+            Orientation = Velocity.ToAngle();
+            Radius = 8;
+        }
 
-            spriteBatch = g._spriteBatch;
-            texture2D = g.Content.Load<Texture2D>("images/Arrow");
-            this.speed = speed;
-            position = new Vector2(990, 365);
-            this.rotation = rotation;
-            origin = new Vector2(texture2D.Width / 2, texture2D.Height / 2);
-            srcRect = new Rectangle(0, 0, texture2D.Width, texture2D.Height);
-            // rotation
-            // scale = 1.0f;
-    }
+        //public Arrow(Game game,
+        //    float rotation,
+        //    Vector2 speed) : base(game)
+        //{
+        //    Game1 g = (Game1)game;
+
+        //    spriteBatch = g._spriteBatch;
+        //    texture2D = g.Content.Load<Texture2D>("images/Arrow");
+        //    this.speed = speed;
+        //    position = new Vector2(990, 365);
+        //    this.rotation = rotation;
+        //    origin = new Vector2(texture2D.Width / 2, texture2D.Height / 2);
+        //    srcRect = new Rectangle(0, 0, texture2D.Width, texture2D.Height);
+        //    // rotation
+        //    // scale = 1.0f;
+        //}
 
         public override void Draw(GameTime gameTime)
         {
