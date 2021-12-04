@@ -9,27 +9,28 @@ using Microsoft.Xna.Framework.Input;
 
 namespace CastleDefense
 {
-    public class Archer : Entity
+    class Archer : Entity
     {
-        private static PlayerShip instance;
-        public static PlayerShip Instance
+        private static Archer instance;
+        public static Archer Instance
         {
             get
             {
                 if (instance == null)
-                    instance = new PlayerShip();
+                    instance = new Archer();
 
                 return instance;
             }
         }
 
+        int framesUntilRespawn = 0;
+        public bool IsDead { get { return framesUntilRespawn > 0; } }
+
         /* Animation */
-        // dimension of a frame
-        private Vector2 dimension;
         // list of srcRect
         private Rectangle[] frames;
         // draw frame index, list has indexer
-        public int frameIndex = -1;
+        public int frameIndex = 0;
 
         // fixed delay
         private int delay = 5;
@@ -38,21 +39,13 @@ namespace CastleDefense
 
         private const int COL = 13;
 
-        private MouseState oldMouseState;
+        private bool reload = false;
 
-        public Archer(Game game): base(game)
+        private Archer()
         {
-            Game1 g = (Game1)game;
-
-            spriteBatch = g._spriteBatch;
-
-            texture2D = g.Content.Load<Texture2D>("images/Archer");
-
-            position = new Vector2(990, 365);
-
-            origin = new Vector2((texture2D.Width / COL) / 2, texture2D.Height / 2);
-
+            image = Art.Archer;
             CreateFrames();
+            Position = new Vector2(1360, 390);
         }
 
         private void CreateFrames()
@@ -60,65 +53,64 @@ namespace CastleDefense
             frames = new Rectangle[COL];
             for (int i = 0; i < COL; i++)
             {
-                frames[i] = new Rectangle(i * (texture2D.Width / COL), 0, texture2D.Width / COL, texture2D.Height);
+                frames[i] = new Rectangle(i * (image.Width / COL), 0, image.Width / COL, image.Height);
             }
         }
 
-        public override void Draw(GameTime gameTime)
+        public override void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Begin();
-            if (frameIndex > 0)
-            {
-                spriteBatch.Draw(texture2D, position, frames[frameIndex], Color.White, rotation, origin, scale, SpriteEffects.None, 0);
-            }
-            else
-            {
-                spriteBatch.Draw(texture2D, position, frames[0], Color.White, rotation, origin, scale, SpriteEffects.None, 0);
-            }
-            spriteBatch.End();
-
-            base.Draw(gameTime);
+            if (!IsDead)
+                base.Draw(spriteBatch);
         }
 
-        public override void Update(GameTime gameTime)
+        public override void Update()
         {
             MouseState ms = Mouse.GetState();
 
-            if (ms.LeftButton == ButtonState.Pressed)
+            if (!reload)
             {
-                if (frameIndex < 8)
+                if (ms.LeftButton == ButtonState.Pressed)
                 {
-                    if (delayCounter >= delay)
+                    if (frameIndex < 8)
                     {
-                        frameIndex++;
-                        delayCounter = 0;
-                    }
-                    delayCounter++;
-                }
-            }
-            if (ms.LeftButton == ButtonState.Released)
-            {
-                if (frameIndex >= 8)
-                {
-                    if (delayCounter >= delay)
-                    {
-                        frameIndex++;
-                        delayCounter = 0;
-                    }
-                    delayCounter++;
-                    if (frameIndex >= COL)
-                    {
-                        frameIndex = -1;
+                        if (delayCounter >= delay)
+                        {
+                            frameIndex++;
+                            delayCounter = 0;
+                        }
+                        delayCounter++;
                     }
                 }
+                if (ms.LeftButton == ButtonState.Released)
+                {
+                    // Cancel
+                    if (frameIndex < 8)
+                    {
+                        frameIndex = 0;
+                    }
+                    // Reload
+                    else
+                    {
+                        reload = true;
+                    }
+                }
             }
-            // Cancel
-            if (frameIndex < 8 && ms.LeftButton == ButtonState.Released)
+            else
             {
-                frameIndex = -1;
+                if (delayCounter >= delay)
+                {
+                    frameIndex++;
+                    delayCounter = 0;
+                }
+                delayCounter++;
+                if (frameIndex >= COL)
+                {
+                    frameIndex = 0;
+                    reload = false;
+                }
             }
 
-            base.Update(gameTime);
+            srcRectangle = frames[frameIndex];
         }
     }
 
