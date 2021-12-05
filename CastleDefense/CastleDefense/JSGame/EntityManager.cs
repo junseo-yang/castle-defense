@@ -76,7 +76,7 @@ namespace CastleDefense
 			//		KillPlayer();
 			//		break;
 			//	}
-			//}			
+			//}
 		}
 
 		private static bool IsColliding(Entity a, Entity b)
