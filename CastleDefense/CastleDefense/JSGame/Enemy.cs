@@ -158,5 +158,34 @@ namespace CastleDefense
                 Velocity = Vector2.Zero;
             }
         }
+
+        public void HandleCollision(Enemy other)
+        {
+            var d = Position - other.Position;
+            Velocity += 10 * d / (d.LengthSquared() + 1);
+        }
+
+        public void WasShot()
+        {
+            IsExpired = true;
+            //PlayerStatus.AddPoints(PointValue);
+            //PlayerStatus.IncreaseMultiplier();
+
+            //for (int i = 0; i < 120; i++)
+            //{
+            //    float speed = 18f * (1f - 1 / rand.NextFloat(1, 10));
+            //    var state = new ParticleState()
+            //    {
+            //        Velocity = rand.NextVector2(speed, speed),
+            //        Type = ParticleType.Enemy,
+            //        LengthMultiplier = 1
+            //    };
+
+            //    Color color = Color.Lerp(color1, color2, rand.NextFloat(0, 1));
+            //    NeonShooterGame.ParticleManager.CreateParticle(Art.LineParticle, Position, color, 190, 1.5f, state);
+            //}
+
+            //Sound.Explosion.Play(0.5f, rand.NextFloat(-0.2f, 0.2f), 0);
+        }
     }
 }
