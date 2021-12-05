@@ -9,6 +9,7 @@ namespace CastleDefense
     abstract class Entity
     {
 		protected Texture2D image;
+		protected Rectangle? srcRectangle = null;
 		// The tint of the image. This will also allow us to change the transparency.
 		protected Color color = Color.White;
 
@@ -27,9 +28,9 @@ namespace CastleDefense
 
 		public abstract void Update();
 
-		public virtual void Draw(SpriteBatch spriteBatch)
-		{
-			spriteBatch.Draw(image, Position, null, color, Orientation, Size / 2f, 1f, 0, 0);
-		}
-	}
+        public virtual void Draw(SpriteBatch spriteBatch)
+        {
+            spriteBatch.Draw(image, Position, srcRectangle, color, Orientation, Size / 2f, 1f, 0, 0);
+        }
+    }
 }
