@@ -7,18 +7,31 @@ using System.Text;
 
 namespace CastleDefense
 {
-    public class Arrow : Entity
+    class Arrow : Entity
     {
-        private int timeCounter = 0;
-        private int existTime = 60;
+        public int ArrowSpeed { get; set; } = 1;
 
         public Arrow(Vector2 position, Vector2 velocity)
         {
             image = Art.Arrow;
             Position = position;
-            Velocity = velocity;
+            // Velocity = velocity * ArrowSpeed;
+            Velocity = velocity * 10;
             Orientation = Velocity.ToAngle();
-            Radius = 8;
+        }
+
+        public override void Update()
+        {
+            if (Velocity.LengthSquared() > 0)
+                Orientation = Velocity.ToAngle();
+
+            Position += Velocity;
+
+            // delete bullets that go off-screen
+            if (Position.X < Vector2.Zero.X || Position.Y < Vector2.Zero.Y || Position.X > Shared.stage.X || Position.Y > Shared.stage.Y)
+            {
+                IsExpired = true;
+            }
         }
 
         //public Arrow(Game game,
@@ -38,46 +51,46 @@ namespace CastleDefense
         //    // scale = 1.0f;
         //}
 
-        public override void Draw(GameTime gameTime)
-        {
-            spriteBatch.Begin();
-            spriteBatch.Draw(texture2D, position, srcRect, Color.White, rotation, origin, scale, SpriteEffects.None, 0);
-            spriteBatch.End();
+        //public override void Draw(GameTime gameTime)
+        //{
+        //    spriteBatch.Begin();
+        //    spriteBatch.Draw(texture2D, position, srcRect, Color.White, rotation, origin, scale, SpriteEffects.None, 0);
+        //    spriteBatch.End();
 
-            base.Draw(gameTime);
-        }
+        //    base.Draw(gameTime);
+        //}
 
-        public override void Update(GameTime gameTime)
-        {
-            position += speed;
-            //top wall
-            if (position.Y <= 0)
-            {
-                this.Enabled = false;
-                this.Visible = false;
-            }
-            //down wall
-            if (position.Y >= Shared.stage.Y)
-            {
-                this.Enabled = false;
-                this.Visible = false;
-            }
-            //left wall
-            if (position.X <= 0)
-            {
-                this.Enabled = false;
-                this.Visible = false;
-            }
+        //public override void Update(GameTime gameTime)
+        //{
+        //    position += speed;
+        //    //top wall
+        //    if (position.Y <= 0)
+        //    {
+        //        this.Enabled = false;
+        //        this.Visible = false;
+        //    }
+        //    //down wall
+        //    if (position.Y >= Shared.stage.Y)
+        //    {
+        //        this.Enabled = false;
+        //        this.Visible = false;
+        //    }
+        //    //left wall
+        //    if (position.X <= 0)
+        //    {
+        //        this.Enabled = false;
+        //        this.Visible = false;
+        //    }
 
-            if (timeCounter >= existTime)
-            {
-                this.Enabled = false;
-                this.Visible = false;
-            }
-            timeCounter++;
+        //    if (timeCounter >= existTime)
+        //    {
+        //        this.Enabled = false;
+        //        this.Visible = false;
+        //    }
+        //    timeCounter++;
 
 
-            base.Update(gameTime);
-        }
+        //    base.Update(gameTime);
+        //}
     }
 }
