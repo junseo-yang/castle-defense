@@ -12,10 +12,12 @@ namespace CastleDefense
         public SpriteBatch _spriteBatch;
 
         /* Scene */
-        private StartScene startScene;
-        private HelpScene helpScene;
-        public ActionScene actionScene;
+        //private StartScene startScene;
+        //private HelpScene helpScene;
+        //public ActionScene actionScene;
         public const int QUIT = 4;
+
+        bool paused = false;
 
         public Game1()
         {
@@ -46,35 +48,37 @@ namespace CastleDefense
             Art.Load(Content);
             Sound.Load(Content);
 
+            EntityManager.Add(Castle.Instance);
             EntityManager.Add(Archer.Instance);
 
-            try
-            {
-                MediaPlayer.IsRepeating = true;
-                MediaPlayer.Play(Sound.Music);
-            }
-            catch { }
+            // Music Player
+            //try
+            //{
+            //    MediaPlayer.IsRepeating = true;
+            //    MediaPlayer.Play(Sound.Music);
+            //}
+            //catch { }
 
-            /* Scene */
-            startScene = new StartScene(this);
-            this.Components.Add(startScene);
+            ///* Scene */
+            //startScene = new StartScene(this);
+            //this.Components.Add(startScene);
 
-            helpScene = new HelpScene(this);
-            this.Components.Add(helpScene);
+            //helpScene = new HelpScene(this);
+            //this.Components.Add(helpScene);
 
-            actionScene = new ActionScene(this);
-            this.Components.Add(actionScene);
+            //actionScene = new ActionScene(this);
+            //this.Components.Add(actionScene);
 
-            startScene.show();
+            //startScene.show();
         }
 
-        private void hideAllScenes()
-        {
-            foreach (GameScene item in Components)
-            {
-                item.hide();
-            }
-        }
+        //private void hideAllScenes()
+        //{
+        //    foreach (GameScene item in Components)
+        //    {
+        //        item.hide();
+        //    }
+        //}
 
         protected override void Update(GameTime gameTime)
         {
@@ -83,38 +87,58 @@ namespace CastleDefense
 
             // TODO: Add your update logic here
 
-            MouseState ms = Mouse.GetState();
+            Input.Update();
 
-            // Debug.WriteLine($"x: {ms.X} y: {ms.Y}");
+            //MouseState ms = Mouse.GetState();
 
-            int selectedIndex = 0;
-            KeyboardState ks = Keyboard.GetState();
-            if (startScene.Enabled)
+            //Debug.WriteLine($"x: {ms.X} y: {ms.Y}");
+
+            //int selectedIndex = 0;
+            //KeyboardState ks = Keyboard.GetState();
+            //if (startScene.Enabled)
+            //{
+            //    selectedIndex = startScene.Menu.SelectedIndex;
+            //    if (selectedIndex == 0 && ks.IsKeyDown(Keys.Enter))
+            //    {
+            //        startScene.hide();
+            //        actionScene.show();
+            //    }
+            //    else if (selectedIndex == 1 && ks.IsKeyDown(Keys.Enter))
+            //    {
+            //        startScene.hide();
+            //        helpScene.show();
+            //    }
+            //    else if (selectedIndex == QUIT && ks.IsKeyDown(Keys.Enter))
+            //    {
+            //        Exit();
+            //    }
+            //}
+
+            //if (helpScene.Enabled || actionScene.Enabled)
+            //{
+            //    if (ks.IsKeyDown(Keys.Escape))
+            //    {
+            //        hideAllScenes();
+            //        startScene.show();
+            //    }
+            //}
+
+            //Input.Update();
+
+            //// Allows the game to exit
+            //if (Input.WasButtonPressed(Buttons.Back) || Input.WasKeyPressed(Keys.Escape))
+            //    this.Exit();
+
+            //if (Input.WasKeyPressed(Keys.P))
+            //    paused = !paused;
+            //if (Input.WasKeyPressed(Keys.B))
+            //    useBloom = !useBloom;
+
+            if (!paused)
             {
-                selectedIndex = startScene.Menu.SelectedIndex;
-                if (selectedIndex == 0 && ks.IsKeyDown(Keys.Enter))
-                {
-                    startScene.hide();
-                    actionScene.show();
-                }
-                else if (selectedIndex == 1 && ks.IsKeyDown(Keys.Enter))
-                {
-                    startScene.hide();
-                    helpScene.show();
-                }
-                else if (selectedIndex == QUIT && ks.IsKeyDown(Keys.Enter))
-                {
-                    Exit();
-                }
-            }
-
-            if (helpScene.Enabled || actionScene.Enabled)
-            {
-                if (ks.IsKeyDown(Keys.Escape))
-                {
-                    hideAllScenes();
-                    startScene.show();
-                }
+                // PlayerStatus.Update();
+                EntityManager.Update();
+                EnemySpawner.Update();
             }
 
             base.Update(gameTime);
@@ -125,6 +149,10 @@ namespace CastleDefense
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
             // TODO: Add your drawing code here
+
+            _spriteBatch.Begin();
+            EntityManager.Draw(_spriteBatch);
+            _spriteBatch.End();
 
             base.Draw(gameTime);
         }
