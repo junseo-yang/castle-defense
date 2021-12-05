@@ -54,7 +54,6 @@ namespace CastleDefense
             enemies = enemies.Where(x => !x.IsExpired).ToList();
         }
 
-
         public static void Draw(SpriteBatch spriteBatch)
         {
             foreach (var entity in entities)
