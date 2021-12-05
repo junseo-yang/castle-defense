@@ -27,11 +27,6 @@ namespace CastleDefense
 		private static Vector2 GetSpawnPosition()
 		{
 			Vector2 pos = new Vector2(0, rand.Next(300, 500));
-			//do
-			//{
-			//	pos = new Vector2(0 , rand.Next(0, (int)Shared.stage.Y));
-			//}
-			//while (Vector2.DistanceSquared(pos, Archer.Instance.Position) < 250 * 250);
 
 			return pos;
 		}
