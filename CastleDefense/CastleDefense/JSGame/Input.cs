@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework.Input;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 
@@ -12,8 +13,6 @@ namespace CastleDefense
 		private static KeyboardState keyboardState, lastKeyboardState;
 		private static MouseState mouseState, lastMouseState;
 		private static GamePadState gamepadState, lastGamepadState;
-
-		private static bool isAimingWithMouse = false;
 
 		public static Vector2 MousePosition { get { return new Vector2(mouseState.X, mouseState.Y); } }
 
@@ -26,13 +25,6 @@ namespace CastleDefense
 			keyboardState = Keyboard.GetState();
 			mouseState = Mouse.GetState();
 			gamepadState = GamePad.GetState(PlayerIndex.One);
-
-			// If the player pressed one of the arrow keys or is using a gamepad to aim, we want to disable mouse aiming. Otherwise,
-			// if the player moves the mouse, enable mouse aiming.
-			if (new[] { Keys.Left, Keys.Right, Keys.Up, Keys.Down }.Any(x => keyboardState.IsKeyDown(x)) || gamepadState.ThumbSticks.Right != Vector2.Zero)
-				isAimingWithMouse = false;
-			else if (MousePosition != new Vector2(lastMouseState.X, lastMouseState.Y))
-				isAimingWithMouse = true;
 		}
 
 		// Checks if a key was just pressed down
@@ -70,36 +62,21 @@ namespace CastleDefense
 
 		public static Vector2 GetAimDirection()
 		{
-			if (isAimingWithMouse)
-				return GetMouseAimDirection();
-
-			Vector2 direction = gamepadState.ThumbSticks.Right;
-			direction.Y *= -1;
-
-			if (keyboardState.IsKeyDown(Keys.Left))
-				direction.X -= 1;
-			if (keyboardState.IsKeyDown(Keys.Right))
-				direction.X += 1;
-			if (keyboardState.IsKeyDown(Keys.Up))
-				direction.Y -= 1;
-			if (keyboardState.IsKeyDown(Keys.Down))
-				direction.Y += 1;
-
-			// If there's no aim input, return zero. Otherwise normalize the direction to have a length of 1.
-			if (direction == Vector2.Zero)
-				return Vector2.Zero;
-			else
-				return Vector2.Normalize(direction);
+			return GetMouseAimDirection();
 		}
 
 		private static Vector2 GetMouseAimDirection()
 		{
-			Vector2 direction = MousePosition - Archer.Instance.Position;
+			Vector2 direction = MousePosition - new Vector2(900, 395);
 
-			if (direction == Vector2.Zero)
-				return Vector2.Zero;
-			else
-				return Vector2.Normalize(direction);
+			Debug.WriteLine($"x: {MousePosition.X} y: {MousePosition.Y}");
+
+			return Vector2.Normalize(direction);
+
+			//if (direction == Vector2.Zero)
+			//	return Vector2.Zero;
+			//else
+			//	return Vector2.Normalize(direction);
 		}
 
 		public static bool WasBombButtonPressed()
