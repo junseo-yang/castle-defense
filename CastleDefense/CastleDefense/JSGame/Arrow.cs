@@ -18,7 +18,6 @@ namespace CastleDefense
             // Velocity = velocity * ArrowSpeed;
             Velocity = velocity * 10;
             Orientation = Velocity.ToAngle();
-            Radius = image.Width / 2;
         }
 
         public override void Update()
