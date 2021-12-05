@@ -93,13 +93,15 @@ namespace CastleDefense
                     {
                         reload = true;
                         var aim = Input.GetAimDirection();
-                        float aimAngle = aim.ToAngle();
-                        Quaternion aimQuat = Quaternion.CreateFromYawPitchRoll(0, 0, aimAngle);
+                        // float aimAngle = aim.ToAngle();
 
-                        Vector2 vel = MathUtil.FromPolar(aimAngle, 11f);
+                        // Vector2 vel = MathUtil.FromPolar(aimAngle, 11f);
 
-                        Vector2 offset = Vector2.Transform(new Vector2(35, -8), aimQuat);
-                        EntityManager.Add(new (Position + offset, vel));
+                        // EntityManager.Add(new Arrow(new Vector2(900, 395), vel));
+                        if (aim.X < 0)
+                        {
+                            EntityManager.Add(new Arrow(new Vector2(900, 395), aim));
+                        }
                     }
                 }
             }
