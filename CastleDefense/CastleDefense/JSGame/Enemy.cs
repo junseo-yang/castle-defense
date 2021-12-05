@@ -58,6 +58,8 @@ namespace CastleDefense
             // Calculation
             this.dimension = new Vector2(image.Width / COL, image.Height / ROW);
 
+            Origin = new Vector2(dimension.X / 2, dimension.Y / 2);
+
             CreateFrames();
         }
 
@@ -96,11 +98,11 @@ namespace CastleDefense
                 {
                     if (frameIndexCol >= 0)
                     {
-                        spriteBatch.Draw(image, Position, frames[frameIndexRow, frameIndexCol], Color.White, 0f, Vector2.Zero, scale, SpriteEffects.None, 0);
+                        spriteBatch.Draw(image, Position, frames[frameIndexRow, frameIndexCol], Color.White, 0f, Origin, 1f, SpriteEffects.None, 0);
                     }
                     else
                     {
-                        spriteBatch.Draw(image, Position, frames[frameIndexRow, 0], Color.White, 0f, Vector2.Zero, scale, SpriteEffects.None, 0);
+                        spriteBatch.Draw(image, Position, frames[frameIndexRow, 0], Color.White, 0f, Origin, 1f, SpriteEffects.None, 0);
                     }
                 }
                 else
@@ -143,7 +145,7 @@ namespace CastleDefense
             
             Position += Velocity;
 
-            srcRectangle = frames[frameIndexRow, frameIndexCol];
+            // srcRectangle = frames[frameIndexRow, frameIndexCol];
         }        
 
         private void ChangeState(State state)
