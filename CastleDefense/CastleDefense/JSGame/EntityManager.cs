@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework.Graphics;
+﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -37,7 +38,7 @@ namespace CastleDefense
         public static void Update()
         {
             isUpdating = true;
-            // HandleCollisions();
+            HandleCollisions();
 
             foreach (var entity in entities)
                 entity.Update();
@@ -54,7 +55,37 @@ namespace CastleDefense
             enemies = enemies.Where(x => !x.IsExpired).ToList();
         }
 
-        public static void Draw(SpriteBatch spriteBatch)
+		static void HandleCollisions()
+		{
+			// handle collisions between arrows and enemies
+			for (int i = 0; i < enemies.Count; i++)
+				for (int j = 0; j < arrows.Count; j++)
+				{
+					if (IsColliding(enemies[i], arrows[j]))
+					{
+						enemies[i].WasShot();
+						arrows[j].IsExpired = true;
+					}
+				}
+
+			//// handle collisions between the player and enemies
+			//for (int i = 0; i < enemies.Count; i++)
+			//{
+			//	if (enemies[i].IsActive && IsColliding(PlayerShip.Instance, enemies[i]))
+			//	{
+			//		KillPlayer();
+			//		break;
+			//	}
+			//}			
+		}
+
+		private static bool IsColliding(Entity a, Entity b)
+		{
+			float radius = a.Radius + b.Radius;
+			return !a.IsExpired && !b.IsExpired && Vector2.DistanceSquared(a.Position, b.Position) < radius * radius;
+		}
+
+		public static void Draw(SpriteBatch spriteBatch)
         {
             foreach (var entity in entities)
                 entity.Draw(spriteBatch);
