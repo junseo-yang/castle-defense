@@ -127,5 +127,14 @@ namespace CastleDefense
         {
             spriteBatch.DrawString(Art.RegularFont, text, pos, Color.White);
         }
+
+        public void RestartGame()
+        {
+            Score = 0;
+            Level = 1;
+            ArcherStatus.IsGameOver = false;
+            Archer.IsDead = false;
+            Castle.Instance.CastleReset();
+        }
     }
 }
