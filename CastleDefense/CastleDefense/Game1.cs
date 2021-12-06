@@ -94,8 +94,11 @@ namespace CastleDefense
             Input.Update();
 
             //MouseState ms = Mouse.GetState();
+            //if (EntityManager.enemies.Count > 0)
+            //{
+            //    Debug.WriteLine($"x: {EntityManager.enemies[0].Position.X} y: {EntityManager.enemies[0].Position.Y}");
+            //}
 
-            //Debug.WriteLine($"x: {ms.X} y: {ms.Y}");
 
             int selectedIndex = 0;
             KeyboardState ks = Keyboard.GetState();
