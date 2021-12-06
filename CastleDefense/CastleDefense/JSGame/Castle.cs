@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Text;
 using CastleDefense;
 using Microsoft.Xna.Framework;
@@ -22,17 +23,26 @@ namespace CastleDefense
             }
         }
 
-        //private Texture2D texCastleDestoryed;
+        public List<Texture2D> CastleImageList = new List<Texture2D> { Art.Castle1, Art.Castle2, Art.Castle3, Art.Castle1Destroyed, Art.Castle2Destroyed, Art.Castle3Destroyed };
+        private int imageIndex = 0;
+
+        private Random rand = new Random();
 
         public Castle()
         {
-            image = Art.Castle1;
+            imageIndex = rand.Next(0, 2);
+            image = CastleImageList[imageIndex];
             Position = new Vector2(1400 - image.Width / 2, 600 - image.Height / 2);
+            Debug.WriteLine($"x: {Position.X} y: {Position.Y}");
         }
 
         public override void Update()
         {
-            // instance.Update();
+            if (ArcherStatus.IsGameOver)
+            {
+                image = CastleImageList[imageIndex + 3];
+            }
+            
         }
 
         //public Castle(Game game) : base(game)
