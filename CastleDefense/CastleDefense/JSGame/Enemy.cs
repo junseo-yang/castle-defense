@@ -170,6 +170,7 @@ namespace CastleDefense
         public void WasShot()
         {
             IsExpired = true;
+            Game1.Score++;
             //PlayerStatus.AddPoints(PointValue);
             //PlayerStatus.IncreaseMultiplier();
 
