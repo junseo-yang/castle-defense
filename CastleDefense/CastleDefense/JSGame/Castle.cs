@@ -24,7 +24,7 @@ namespace CastleDefense
         }
 
         public List<Texture2D> CastleImageList = new List<Texture2D> { Art.Castle1, Art.Castle2, Art.Castle3, Art.Castle1Destroyed, Art.Castle2Destroyed, Art.Castle3Destroyed };
-        private int imageIndex = 0;
+        public int imageIndex = 0;
 
         private Random rand = new Random();
 
@@ -42,7 +42,15 @@ namespace CastleDefense
             {
                 image = CastleImageList[imageIndex + 3];
             }
-            
+            else
+            {
+                image = CastleImageList[imageIndex];
+            }
+        }
+
+        public void CastleReset()
+        {
+            imageIndex = rand.Next(0, 2);
         }
 
         //public Castle(Game game) : base(game)
