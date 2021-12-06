@@ -10,7 +10,7 @@ namespace CastleDefense
     static class EntityManager
     {
         static List<Entity> entities = new List<Entity>();
-        static List<Enemy> enemies = new List<Enemy>();
+        public static List<Enemy> enemies = new List<Enemy>();
         static List<Arrow> arrows = new List<Arrow>();
 
         static bool isUpdating;
@@ -68,20 +68,27 @@ namespace CastleDefense
 					}
 				}
 
-			//// handle collisions between the player and enemies
-			//for (int i = 0; i < enemies.Count; i++)
-			//{
-			//	if (enemies[i].IsActive && IsColliding(PlayerShip.Instance, enemies[i]))
-			//	{
-			//		KillPlayer();
-			//		break;
-			//	}
-			//}
-		}
+            // handle collisions between the player and enemies
+            for (int i = 0; i < enemies.Count; i++)
+            {
+                if (enemies[i].IsActive && !ArcherStatus.IsGameOver && enemies[i].Position.X >= 900)
+                {
+                    KillArcher();
+                    break;
+                }
+            }
+        }
 
         public static void EmptyEnemies()
         {
             enemies.ForEach(x => x.WasShot());
+            EnemySpawner.Reset();
+        }
+
+        private static void KillArcher()
+        {
+            ArcherStatus.IsGameOver = true;
+            EmptyEnemies();
             EnemySpawner.Reset();
         }
 
