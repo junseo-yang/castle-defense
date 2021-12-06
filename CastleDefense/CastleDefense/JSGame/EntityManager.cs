@@ -65,7 +65,8 @@ namespace CastleDefense
 					{
 						enemies[i].WasShot();
 						arrows[j].IsExpired = true;
-					}
+                        ActionScene.Score++;
+                    }
 				}
 
             // handle collisions between the player and enemies
