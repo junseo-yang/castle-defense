@@ -32,43 +32,44 @@ namespace CastleDefense
 
         public override void Update(GameTime gameTime)
         {
-            if (Input.WasKeyPressed(Keys.P))
-                paused = !paused;
-            //if (Input.WasKeyPressed(Keys.B))
-            //    useBloom = !useBloom;
-
-            if (!paused)
+            if (!ArcherStatus.IsGameOver)
             {
-                // PlayerStatus.Update();
-                EntityManager.Update();
-                EnemySpawner.Update();
-            }
+                if (Input.WasKeyPressed(Keys.P))
+                    paused = !paused;
+                //if (Input.WasKeyPressed(Keys.B))
+                //    useBloom = !useBloom;
 
-            if (Score % 2 == 0 && Score != 0 && !paused)
-            {
-                if (!Archer.IsDead)
+                if (!paused)
                 {
-                    paused = true;
-                    EntityManager.EmptyEnemies();
-                    System.Windows.Forms.MessageBox.Show("Congratulations! You passed Level " + Level, "Castle Defense");
-                    Level++;
-                    Score = 0;
-                    paused = false;
+                    // PlayerStatus.Update();
+                    EntityManager.Update();
+                    EnemySpawner.Update();
                 }
-            }
 
-            try
-            {
-                UpdateScore();
-            }
-            catch (Exception ex)
-            {
-                System.Windows.Forms.MessageBox.Show("Error: \n" + ex.Message);
-            }
+                if (Score % 2 == 0 && Score != 0 && !paused)
+                {
+                    if (!Archer.IsDead)
+                    {
+                        paused = true;
+                        EntityManager.EmptyEnemies();
+                        System.Windows.Forms.MessageBox.Show("Congratulations! You passed Level " + Level, "Castle Defense");
+                        Level++;
+                        Score = 0;
+                        paused = false;
+                    }
+                }
 
-            
+                try
+                {
+                    UpdateScore();
+                }
+                catch (Exception ex)
+                {
+                    System.Windows.Forms.MessageBox.Show("Error: \n" + ex.Message);
+                }
 
-            base.Update(gameTime);
+                base.Update(gameTime);
+            }
         }
 
         public override void Draw(GameTime gameTime)
