@@ -2,7 +2,11 @@
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
+using System;
+using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
+using System.Windows.Forms;
 
 namespace CastleDefense
 {
@@ -16,6 +20,11 @@ namespace CastleDefense
         private HelpScene helpScene;
         public ActionScene actionScene;
         public const int QUIT = 4;
+
+        public static int Score = 0;
+
+        public string PlayerName { get; set; }
+        public string FileName { get; set; }
 
         public Game1()
         {
@@ -33,6 +42,11 @@ namespace CastleDefense
 
             Shared.stage = new Vector2(_graphics.PreferredBackBufferWidth,
                 _graphics.PreferredBackBufferHeight);
+
+            do
+            {
+                SetDirectory();
+            } while (string.IsNullOrEmpty(PlayerName) || string.IsNullOrEmpty(FileName));
 
             base.Initialize();
         }
@@ -77,9 +91,6 @@ namespace CastleDefense
 
         protected override void Update(GameTime gameTime)
         {
-            //if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
-            //    Exit();
-
             // TODO: Add your update logic here
 
             Input.Update();
@@ -93,17 +104,17 @@ namespace CastleDefense
             if (startScene.Enabled)
             {
                 selectedIndex = startScene.Menu.SelectedIndex;
-                if (selectedIndex == 0 && ks.IsKeyDown(Keys.Enter))
+                if (selectedIndex == 0 && ks.IsKeyDown(Microsoft.Xna.Framework.Input.Keys.Enter))
                 {
                     startScene.hide();
                     actionScene.show();
                 }
-                else if (selectedIndex == 1 && ks.IsKeyDown(Keys.Enter))
+                else if (selectedIndex == 1 && ks.IsKeyDown(Microsoft.Xna.Framework.Input.Keys.Enter))
                 {
                     startScene.hide();
                     helpScene.show();
                 }
-                else if (selectedIndex == QUIT && ks.IsKeyDown(Keys.Enter))
+                else if (selectedIndex == QUIT && ks.IsKeyDown(Microsoft.Xna.Framework.Input.Keys.Enter))
                 {
                     Exit();
                 }
@@ -111,24 +122,22 @@ namespace CastleDefense
 
             if (helpScene.Enabled || actionScene.Enabled)
             {
-                if (ks.IsKeyDown(Keys.Escape))
+                if (ks.IsKeyDown(Microsoft.Xna.Framework.Input.Keys.Escape))
                 {
                     hideAllScenes();
                     startScene.show();
                 }
             }
 
-            //Input.Update();
-
-            //// Allows the game to exit
-            //if (Input.WasButtonPressed(Buttons.Back) || Input.WasKeyPressed(Keys.Escape))
-            //    this.Exit();
-
-            //if (Input.WasKeyPressed(Keys.P))
-            //    paused = !paused;
-            //if (Input.WasKeyPressed(Keys.B))
-            //    useBloom = !useBloom;
-
+            try
+            {
+                UpdateScore();
+            }
+            catch (Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show("Error: \n" + ex.Message);
+            }
+            
 
             base.Update(gameTime);
         }
@@ -140,6 +149,81 @@ namespace CastleDefense
             // TODO: Add your drawing code here
 
             base.Draw(gameTime);
+        }
+
+        public void SetDirectory()
+        {
+            try
+            {
+                System.Windows.Forms.MessageBox.Show("Before we start this game, you need to specify a location to create a game data save file to save scores.", "Catle Defense");
+
+                using (var fbd = new FolderBrowserDialog())
+                {
+                    DialogResult result = fbd.ShowDialog();
+
+                    if (result == DialogResult.OK && !string.IsNullOrWhiteSpace(fbd.SelectedPath))
+                    {
+                        FileName = fbd.SelectedPath + "\\CastleDefenseSave.txt";
+
+                        if (!File.Exists(FileName))
+                        {
+                            File.Create(FileName).Dispose();
+                            System.Windows.Forms.MessageBox.Show("CastleDefenseSave.txt is created under selected location.", "Castle Defense");
+                        }
+                        else
+                        {
+                            System.Windows.Forms.MessageBox.Show("CastleDefenseSave.txt is already created under selected location.", "Castle Defense");
+                        }
+                    }
+                }
+
+                if (String.IsNullOrEmpty(FileName))
+                {
+                    System.Windows.Forms.MessageBox.Show("Location path is empty", "Castle Defense");
+                }
+                else
+                {
+                    SetPlayerName();
+                }
+            }
+            catch (Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show("Error: \n" + ex.Message);
+            }
+        }
+
+        private void SetPlayerName()
+        {
+            using (StreamWriter writer = new StreamWriter(FileName, append: true))
+            {
+                InputBox inputBox = new InputBox("Player Name", "You need to enter a player name to play.");
+                PlayerName = inputBox.GetName();
+
+                writer.Write(PlayerName + "\t");
+            }
+        }
+
+        private void UpdateScore()
+        {
+            string[] records;
+            string updatedRecord = "";
+            using (StreamReader reader = new StreamReader(FileName))
+            {
+                records = reader.ReadToEnd().Split("\n", StringSplitOptions.RemoveEmptyEntries);
+            }
+
+            using (StreamWriter writer = new StreamWriter(FileName, append: false))
+            {
+                foreach (var item in records)
+                {
+                    if (item.StartsWith(PlayerName))
+                    {
+                        updatedRecord = PlayerName + "\t" + Score;
+                    }
+                }
+
+                writer.WriteLine(updatedRecord);
+            }
         }
     }
 }
