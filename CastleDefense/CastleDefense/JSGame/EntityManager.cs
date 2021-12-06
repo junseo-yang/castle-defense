@@ -79,7 +79,13 @@ namespace CastleDefense
 			//}
 		}
 
-		private static bool IsColliding(Entity a, Entity b)
+        public static void EmptyEnemies()
+        {
+            enemies.ForEach(x => x.WasShot());
+            EnemySpawner.Reset();
+        }
+
+        private static bool IsColliding(Entity a, Entity b)
 		{
 			float radius = a.Radius + b.Radius;
 			return !a.IsExpired && !b.IsExpired && Vector2.DistanceSquared(a.Position, b.Position) < radius * radius;
