@@ -21,10 +21,8 @@ namespace CastleDefense
         public ActionScene actionScene;
         public const int QUIT = 4;
 
-        public static int Score = 0;
-
-        public string PlayerName { get; set; }
-        public string FileName { get; set; }
+        public static string PlayerName { get; set; }
+        public static string FileName { get; set; }
 
         public Game1()
         {
@@ -129,16 +127,6 @@ namespace CastleDefense
                 }
             }
 
-            try
-            {
-                UpdateScore();
-            }
-            catch (Exception ex)
-            {
-                System.Windows.Forms.MessageBox.Show("Error: \n" + ex.Message);
-            }
-            
-
             base.Update(gameTime);
         }
 
@@ -200,29 +188,6 @@ namespace CastleDefense
                 PlayerName = inputBox.GetName();
 
                 writer.Write(PlayerName + "\t");
-            }
-        }
-
-        private void UpdateScore()
-        {
-            string[] records;
-            string updatedRecord = "";
-            using (StreamReader reader = new StreamReader(FileName))
-            {
-                records = reader.ReadToEnd().Split("\n", StringSplitOptions.RemoveEmptyEntries);
-            }
-
-            using (StreamWriter writer = new StreamWriter(FileName, append: false))
-            {
-                foreach (var item in records)
-                {
-                    if (item.StartsWith(PlayerName))
-                    {
-                        updatedRecord = PlayerName + "\t" + Score;
-                    }
-                }
-
-                writer.WriteLine(updatedRecord);
             }
         }
     }
