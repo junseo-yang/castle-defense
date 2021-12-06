@@ -6,7 +6,6 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Media;
-using CastleDefense;
 
 namespace CastleDefense
 {
@@ -15,6 +14,8 @@ namespace CastleDefense
         private SoundEffect arrowSound;
 
         bool paused = false;
+
+        public int Level { get; set; } = 1;
 
         public ActionScene(Game game) : base(game)
         {
@@ -29,6 +30,11 @@ namespace CastleDefense
 
         public override void Update(GameTime gameTime)
         {
+            if (Input.WasKeyPressed(Keys.P))
+                paused = !paused;
+            //if (Input.WasKeyPressed(Keys.B))
+            //    useBloom = !useBloom;
+
             if (!paused)
             {
                 // PlayerStatus.Update();
