@@ -108,6 +108,7 @@ namespace CastleDefense
                 if (selectedIndex == 0 && ks.IsKeyDown(Microsoft.Xna.Framework.Input.Keys.Enter))
                 {
                     startScene.hide();
+                    actionScene.RestartGame();
                     actionScene.show();
                 }
                 else if (selectedIndex == 1 && ks.IsKeyDown(Microsoft.Xna.Framework.Input.Keys.Enter))
