@@ -31,7 +31,7 @@ namespace CastleDefense
         /**/
         public List<Texture2D> EnemyImageList = new List<Texture2D> { Art.RedBat, Art.Samurai, Art.NormalZombie, Art.MadZombie, };
 
-        public static Random rand = new Random();
+        private Random rand = new Random();
 
         private int timeUntilStart = 90;
         public bool IsActive { get { return timeUntilStart <= 0; } }
@@ -124,10 +124,10 @@ namespace CastleDefense
                 {
                     ChangeState(State.Move);
                 }
-                if (Position.X >= Shared.stage.X - 500)
-                {
-                    ChangeState(State.Idle);
-                }
+                //if (Position.X >= Shared.stage.X - 500)
+                //{
+                //    ChangeState(State.Idle);
+                //}
 
                 // Increase delayCounter
                 delayCounter++;
@@ -144,7 +144,6 @@ namespace CastleDefense
 
                     delayCounter = 0;
                 }
-
 
                 Position += Velocity;
             }
