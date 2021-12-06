@@ -29,11 +29,11 @@ namespace CastleDefense
         private const int COL = 8;
 
         /**/
-        public List<Texture2D> EnemyImageList = new List<Texture2D> { Art.Wolf, Art.RedBat, Art.Samurai, Art.NormalZombie, Art.MadZombie, };
+        public List<Texture2D> EnemyImageList = new List<Texture2D> { Art.RedBat, Art.Samurai, Art.NormalZombie, Art.MadZombie, };
 
         public static Random rand = new Random();
 
-        private int timeUntilStart = 60;
+        private int timeUntilStart = 90;
         public bool IsActive { get { return timeUntilStart <= 0; } }
         public int PointValue { get; private set; }
         public int EnemyState { get; set; }
@@ -49,7 +49,8 @@ namespace CastleDefense
 
         public Enemy(Vector2 position)
         {
-            image = EnemyImageList[rand.Next(1, EnemyImageList.Count) - 1];
+            // Generate Random Enemy by Level
+            image = EnemyImageList[rand.Next(0, ActionScene.Level) % EnemyImageList.Count];
             Position = position;
             //Radius = image.Width / 2f;
             color = Color.White;
@@ -87,7 +88,7 @@ namespace CastleDefense
 
         public override void Draw(SpriteBatch spriteBatch)
         {
-            if (timeUntilStart > 0)
+            if (timeUntilStart < 0)
             {
                 // Draw an expanding, fading -out version of the sprite as part of the spawn -in effect.
                 //float factor = timeUntilStart / 60f;    // decreases from 1 to 0 as the enemy spawns in
@@ -116,34 +117,41 @@ namespace CastleDefense
 
         public override void Update()
         {
-            // Get Castle's x value
-            if (Position.X < Shared.stage.X - 500)
+            if (timeUntilStart < 0)
             {
-                ChangeState(State.Move);
-            }
-            if (Position.X >= Shared.stage.X - 500)
-            {
-                ChangeState(State.Idle);
-            }
-
-            // Increase delayCounter
-            delayCounter++;
-            // If delaycounter is greater than delay, then frameIndex++
-            if (delayCounter > delay)
-            {
-                frameIndexCol++;
-
-                // 12.4.	Prevent frameIndex increases beyond  maximum value, Initilaize, Hide
-                if (frameIndexCol >= COL)
+                // Get Castle's x value
+                if (Position.X < Shared.stage.X - 500)
                 {
-                    frameIndexCol = 0;
+                    ChangeState(State.Move);
+                }
+                if (Position.X >= Shared.stage.X - 500)
+                {
+                    ChangeState(State.Idle);
                 }
 
-                delayCounter = 0;                
-            }
+                // Increase delayCounter
+                delayCounter++;
+                // If delaycounter is greater than delay, then frameIndex++
+                if (delayCounter > delay)
+                {
+                    frameIndexCol++;
 
-            
-            Position += Velocity;
+                    // 12.4.	Prevent frameIndex increases beyond  maximum value, Initilaize, Hide
+                    if (frameIndexCol >= COL)
+                    {
+                        frameIndexCol = 0;
+                    }
+
+                    delayCounter = 0;
+                }
+
+
+                Position += Velocity;
+            }
+            else
+            {
+                timeUntilStart--;
+            }            
 
             // srcRectangle = frames[frameIndexRow, frameIndexCol];
         }        
@@ -170,7 +178,7 @@ namespace CastleDefense
         public void WasShot()
         {
             IsExpired = true;
-            Game1.Score++;
+            ActionScene.Score++;
             //PlayerStatus.AddPoints(PointValue);
             //PlayerStatus.IncreaseMultiplier();
 
