@@ -18,7 +18,6 @@ namespace CastleDefense
 		public static Texture2D Castle2Destroyed { get; private set; }
 		public static Texture2D Castle3Destroyed { get; private set; }
 
-		public static Texture2D Wolf { get; private set; }
 		public static Texture2D RedBat { get; private set; }
 		public static Texture2D Samurai { get; private set; }
 		public static Texture2D NormalZombie { get; private set; }
@@ -49,7 +48,6 @@ namespace CastleDefense
 			Castle2Destroyed = content.Load<Texture2D>("images/Castle/Castle2Destoryed");
 			Castle3Destroyed = content.Load<Texture2D>("images/Castle/Castle3Destoryed");
 
-			Wolf = content.Load<Texture2D>("images/Enemy/Wolf");
 			RedBat = content.Load<Texture2D>("images/Enemy/RedBat");
 			Samurai = content.Load<Texture2D>("images/Enemy/Samurai");
 			NormalZombie = content.Load<Texture2D>("images/Enemy/NormalZombie");
