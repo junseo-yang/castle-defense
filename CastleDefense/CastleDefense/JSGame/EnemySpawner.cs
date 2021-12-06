@@ -9,11 +9,10 @@ namespace CastleDefense
     {
         static Random rand = new Random();
         static float inverseSpawnChance = 90;
-        static float inverseBlackHoleChance = 600;
 
 		public static void Update()
 		{
-			if (!Archer.Instance.IsDead && EntityManager.Count < 200)
+			if (!Archer.IsDead && EntityManager.Count < 200)
 			{
                 if (rand.Next((int)inverseSpawnChance) == 0)
                     EntityManager.Add(Enemy.CreateRandomEnemy(GetSpawnPosition()));
