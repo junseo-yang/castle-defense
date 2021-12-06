@@ -24,7 +24,7 @@ namespace CastleDefense
         }
 
         int framesUntilRespawn = 0;
-        public bool IsDead { get { return framesUntilRespawn > 0; } }
+        public static bool IsDead = false;
 
         /* Animation */
         // list of srcRect
