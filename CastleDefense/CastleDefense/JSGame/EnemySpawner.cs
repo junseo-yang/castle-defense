@@ -25,7 +25,7 @@ namespace CastleDefense
 
 		private static Vector2 GetSpawnPosition()
 		{
-			Vector2 pos = new Vector2(0, rand.Next(300, 500));
+			Vector2 pos = new Vector2(0, rand.Next(420, 500));
 
 			return pos;
 		}
