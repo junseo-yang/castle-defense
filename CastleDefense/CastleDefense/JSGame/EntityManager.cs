@@ -86,10 +86,16 @@ namespace CastleDefense
             EnemySpawner.Reset();
         }
 
+        public static void EmptyArrows()
+        {
+            arrows.ForEach(x => x.WasShot());
+        }
+
         private static void KillArcher()
         {
             ArcherStatus.IsGameOver = true;
             EmptyEnemies();
+            EmptyArrows();
             EnemySpawner.Reset();
         }
 
