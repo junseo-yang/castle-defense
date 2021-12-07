@@ -33,7 +33,6 @@ namespace CastleDefense
             imageIndex = rand.Next(0, 2);
             image = CastleImageList[imageIndex];
             Position = new Vector2(1400 - image.Width / 2, 600 - image.Height / 2);
-            Debug.WriteLine($"x: {Position.X} y: {Position.Y}");
         }
 
         public override void Update()
