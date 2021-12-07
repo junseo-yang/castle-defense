@@ -58,10 +58,6 @@ namespace CastleDefense
 			Background3 = content.Load<Texture2D>("images/Background/Background3");
 			Background4 = content.Load<Texture2D>("images/Background/Background4");
 			Background5 = content.Load<Texture2D>("images/Background/Background5");
-			Background6 = content.Load<Texture2D>("images/Background/Background6");
-			Background7 = content.Load<Texture2D>("images/Background/Background7");
-			Background8 = content.Load<Texture2D>("images/Background/Background8");
-			Background9 = content.Load<Texture2D>("images/Background/Background9");
 
 			RegularFont = content.Load<SpriteFont>("fonts/regularFont");
 			HilightFont = content.Load<SpriteFont>("fonts/hilightFont");
