@@ -18,6 +18,7 @@ namespace CastleDefense
 
         public static int Level { get; set; } = 1;
         public static int Score = 0;
+        public int OldScore { get; set; } = -1;
 
         public ActionScene(Game game) : base(game)
         {
@@ -26,6 +27,7 @@ namespace CastleDefense
 
             // arrowSound = g.Content.Load<SoundEffect>("sounds/shoot");
 
+            EntityManager.Add(Background.Instance);
             EntityManager.Add(Castle.Instance);
             EntityManager.Add(Archer.Instance);
         }
@@ -46,15 +48,16 @@ namespace CastleDefense
                     EnemySpawner.Update();
                 }
 
-                if (Score % 2 == 0 && Score != 0 && !paused)
+                if (Score % 2 == 0 && Score != 0 && !paused && OldScore != Score)
                 {
                     if (!Archer.IsDead)
                     {
                         paused = true;
                         EntityManager.EmptyEnemies();
+                        EntityManager.EmptyArrows();
                         System.Windows.Forms.MessageBox.Show("Congratulations! You passed Level " + Level, "Castle Defense");
                         Level++;
-                        Score = 0;
+                        OldScore = Score;
                         paused = false;
                     }
                 }
@@ -84,8 +87,8 @@ namespace CastleDefense
 
             if (ArcherStatus.IsGameOver)
             {
-                string text = "Game Over\n" +
-                    "Your Score: " + Score + "\n";
+                string text = "Game Over\n" + "Your Level: " + Level + "\n" +
+                "Your Score: " + Score + "\n" + "Press ESC to Quit";
 
                 Vector2 textSize = Art.RegularFont.MeasureString(text);
                 spriteBatch.DrawString(Art.RegularFont, text, Shared.stage / 2 - textSize / 2, Color.White);
@@ -134,7 +137,9 @@ namespace CastleDefense
             Level = 1;
             ArcherStatus.IsGameOver = false;
             Archer.IsDead = false;
+            EntityManager.EmptyEnemies();
             Castle.Instance.CastleReset();
+            Background.Instance.BackgroundReset();
         }
     }
 }
