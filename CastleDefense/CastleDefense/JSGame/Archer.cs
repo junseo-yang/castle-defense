@@ -33,7 +33,7 @@ namespace CastleDefense
         public int frameIndex = 0;
 
         // fixed delay
-        private int delay = 5;
+        private int delay = (int)(4 - ActionScene.Level * 0.01);
         // fluctulating value
         private int delayCounter;
 
@@ -92,12 +92,9 @@ namespace CastleDefense
                     else
                     {
                         reload = true;
+                        
                         var aim = Input.GetAimDirection();
-                        // float aimAngle = aim.ToAngle();
 
-                        // Vector2 vel = MathUtil.FromPolar(aimAngle, 11f);
-
-                        // EntityManager.Add(new Arrow(new Vector2(900, 395), vel));
                         if (aim.X < 0)
                         {
                             EntityManager.Add(new Arrow(new Vector2(900, 395), aim));
