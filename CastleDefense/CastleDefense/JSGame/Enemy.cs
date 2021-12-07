@@ -7,28 +7,24 @@ namespace CastleDefense
 {
     class Enemy : Entity
     {
-        /* Declare variables for Draw*/
-        private Texture2D tex;
-        private float scale = 0.2f;
-
         /* Animation */
         // dimension of a frame
         private Vector2 dimension;
         // list of srcRect
         private Rectangle[,] frames;
         // draw frame index, list has indexer
-        public int frameIndexRow = 0;
-        private int frameIndexCol = 0;
+        public int frameIndexRow = -1;
+        private int frameIndexCol = -1;
 
         // fixed delay
-        private int delay = 3;
+        private int delay = 4;
         // fluctulating value
         private int delayCounter;
 
         private const int ROW = 5;
         private const int COL = 8;
 
-        /**/
+        /* Enemey Image List */
         public List<Texture2D> EnemyImageList = new List<Texture2D> { Art.RedBat, Art.Samurai, Art.NormalZombie, Art.MadZombie, };
 
         private Random rand = new Random();
@@ -116,7 +112,7 @@ namespace CastleDefense
             if (timeUntilStart < 0)
             {
                 // Get Castle's x value
-                if (Position.X < Shared.stage.X - 500)
+                if (Position.X < Shared.stage.X - 500 && frameIndexRow != (int)State.Move)
                 {
                     ChangeState(State.Move);
                 }
@@ -156,7 +152,7 @@ namespace CastleDefense
             frameIndexRow = (int)state;
             if (state == State.Move)
             {
-                Velocity = new Vector2(1, 0);
+                Velocity = new Vector2(rand.Next(1, ActionScene.Level), 0);
             }
             else
             {
