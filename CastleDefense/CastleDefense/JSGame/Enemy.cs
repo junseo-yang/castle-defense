@@ -90,10 +90,6 @@ namespace CastleDefense
         {
             if (timeUntilStart < 0)
             {
-                // Draw an expanding, fading -out version of the sprite as part of the spawn -in effect.
-                //float factor = timeUntilStart / 60f;    // decreases from 1 to 0 as the enemy spawns in
-                //spriteBatch.Draw(image, Position, null, Color.White * factor, Orientation, Size / 2f, 2 - factor, 0, 0);
-
                 // Safety Condition
                 if (frameIndexRow >= 0)
                 {
@@ -139,7 +135,7 @@ namespace CastleDefense
                     // 12.4.	Prevent frameIndex increases beyond  maximum value, Initilaize, Hide
                     if (frameIndexCol >= COL)
                     {
-                        frameIndexCol = 0;
+                        frameIndexCol = -1;
                     }
 
                     delayCounter = 0;
@@ -177,24 +173,6 @@ namespace CastleDefense
         public void WasShot()
         {
             IsExpired = true;
-            //PlayerStatus.AddPoints(PointValue);
-            //PlayerStatus.IncreaseMultiplier();
-
-            //for (int i = 0; i < 120; i++)
-            //{
-            //    float speed = 18f * (1f - 1 / rand.NextFloat(1, 10));
-            //    var state = new ParticleState()
-            //    {
-            //        Velocity = rand.NextVector2(speed, speed),
-            //        Type = ParticleType.Enemy,
-            //        LengthMultiplier = 1
-            //    };
-
-            //    Color color = Color.Lerp(color1, color2, rand.NextFloat(0, 1));
-            //    NeonShooterGame.ParticleManager.CreateParticle(Art.LineParticle, Position, color, 190, 1.5f, state);
-            //}
-
-            //Sound.Explosion.Play(0.5f, rand.NextFloat(-0.2f, 0.2f), 0);
         }
     }
 }
