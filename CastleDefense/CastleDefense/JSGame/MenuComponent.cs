@@ -16,6 +16,7 @@ namespace CastleDefense
 
         public int SelectedIndex { get; set; }
         private Vector2 position;
+        private Vector2 origin;
         private Color regularColor = Color.Black;
         private Color hilightColor = Color.Red;
 
@@ -68,21 +69,25 @@ namespace CastleDefense
             {
                 if (SelectedIndex == i)
                 {
-                    spriteBatch.DrawString(hilightFont, menuItems[i], tempPos, hilightColor);
+                    DrawRightAlignedString(hilightFont, menuItems[i], tempPos.Y);
                     tempPos.Y += hilightFont.LineSpacing;
                 }
                 else
                 {
-                    spriteBatch.DrawString(regularFont, menuItems[i], tempPos, regularColor);
+                    DrawRightAlignedString(regularFont, menuItems[i], tempPos.Y);
                     tempPos.Y += regularFont.LineSpacing;
                 }
-
             }
 
             spriteBatch.End();
 
-
             base.Draw(gameTime);
+        }
+
+        private void DrawRightAlignedString(SpriteFont spriteFont, string text, float y)
+        {
+            var textWidth = spriteFont.MeasureString(text).X;
+            spriteBatch.DrawString(spriteFont, text, new Vector2((Shared.stage.X - textWidth) / 2, y), Color.Black);
         }
 
     }
