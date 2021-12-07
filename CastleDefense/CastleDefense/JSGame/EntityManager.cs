@@ -12,6 +12,7 @@ namespace CastleDefense
         static List<Entity> entities = new List<Entity>();
         public static List<Enemy> enemies = new List<Enemy>();
         static List<Arrow> arrows = new List<Arrow>();
+        static List<Bomb> bombs = new List<Bomb>();
 
         static bool isUpdating;
         static List<Entity> addedEntities = new List<Entity>();
@@ -33,6 +34,8 @@ namespace CastleDefense
                 arrows.Add(entity as Arrow);
             else if (entity is Enemy)
                 enemies.Add(entity as Enemy);
+            else if (entity is Bomb)
+                bombs.Add(entity as Bomb);
         }
 
         public static void Update()
@@ -53,6 +56,7 @@ namespace CastleDefense
             entities = entities.Where(x => !x.IsExpired).ToList();
             arrows = arrows.Where(x => !x.IsExpired).ToList();
             enemies = enemies.Where(x => !x.IsExpired).ToList();
+            bombs = bombs.Where(x => !x.IsExpired).ToList();
         }
 
 		static void HandleCollisions()
@@ -91,6 +95,11 @@ namespace CastleDefense
             arrows.ForEach(x => x.WasShot());
         }
 
+        public static void EmptyBombs()
+        {
+            bombs.ForEach(x => x.WasDone());
+        }
+
         private static void KillArcher()
         {
             ArcherStatus.IsGameOver = true;
@@ -112,3 +121,4 @@ namespace CastleDefense
         }
     }
 }
+
