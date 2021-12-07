@@ -20,6 +20,8 @@ namespace CastleDefense
         public static int Score = 0;
         public int OldScore { get; set; } = -1;
 
+        public int BombCount { get; set; } = 5;
+
         public ActionScene(Game game) : base(game)
         {
             Game1 g = (Game1)game;
@@ -38,8 +40,16 @@ namespace CastleDefense
             {
                 if (Input.WasKeyPressed(Keys.P))
                     paused = !paused;
-                //if (Input.WasKeyPressed(Keys.B))
-                //    useBloom = !useBloom;
+                if (Input.WasKeyPressed(Keys.B) && BombCount != 0)
+                {
+                    EntityManager.Add(new Bomb(new Vector2(800, 950)));
+                    EntityManager.Add(new Bomb(new Vector2(1000, 950)));
+                    EntityManager.Add(new Bomb(new Vector2(1200, 950)));
+                    EntityManager.Add(new Bomb(new Vector2(1400, 950)));
+                    EntityManager.EmptyEnemies();
+                    BombCount--;
+                }
+                    
 
                 if (!paused)
                 {
@@ -84,6 +94,7 @@ namespace CastleDefense
             spriteBatch.Begin();
             DrawTitleSafeAlignedString("Level: " + Level, Vector2.Zero);
             DrawTitleSafeAlignedString("Scores: " + Score, new Vector2(0, 16));
+            DrawTitleSafeAlignedString("Bomb: " + BombCount, new Vector2(0, 32));
 
             if (ArcherStatus.IsGameOver)
             {
@@ -135,9 +146,11 @@ namespace CastleDefense
         {
             Score = 0;
             Level = 1;
+            BombCount = 5;
             ArcherStatus.IsGameOver = false;
             Archer.IsDead = false;
             EntityManager.EmptyEnemies();
+            EntityManager.EmptyBombs();
             Castle.Instance.CastleReset();
             Background.Instance.BackgroundReset();
         }
