@@ -19,7 +19,7 @@ namespace CastleDefense
         private StartScene startScene;
         private HelpScene helpScene;
         public ActionScene actionScene;
-        public const int QUIT = 4;
+        public const int QUIT = 5;
 
         public static string PlayerName { get; set; }
         public static string FileName { get; set; }
@@ -58,13 +58,13 @@ namespace CastleDefense
             Art.Load(Content);
             Sound.Load(Content);
 
-            //// Music Player
-            //try
-            //{
-            //    MediaPlayer.IsRepeating = true;
-            //    MediaPlayer.Play(Sound.Music);
-            //}
-            //catch { }
+            // Music Player
+            try
+            {
+                MediaPlayer.IsRepeating = true;
+                MediaPlayer.Play(Sound.Music);
+            }
+            catch { }
 
             /* Scene */
             startScene = new StartScene(this);
@@ -93,13 +93,6 @@ namespace CastleDefense
 
             Input.Update();
 
-            //MouseState ms = Mouse.GetState();
-            //if (EntityManager.enemies.Count > 0)
-            //{
-            //    Debug.WriteLine($"x: {EntityManager.enemies[0].Position.X} y: {EntityManager.enemies[0].Position.Y}");
-            //}
-
-
             int selectedIndex = 0;
             KeyboardState ks = Keyboard.GetState();
             if (startScene.Enabled)
@@ -111,7 +104,18 @@ namespace CastleDefense
                     actionScene.RestartGame();
                     actionScene.show();
                 }
-                else if (selectedIndex == 1 && ks.IsKeyDown(Microsoft.Xna.Framework.Input.Keys.Enter))
+                if (selectedIndex == 1 && ks.IsKeyDown(Microsoft.Xna.Framework.Input.Keys.Enter))
+                {
+                    //startScene.hide();
+                    //actionScene.RestartGame();
+                    //actionScene.show();
+                }
+                else if (selectedIndex == 2 && ks.IsKeyDown(Microsoft.Xna.Framework.Input.Keys.Enter))
+                {
+                    startScene.hide();
+                    helpScene.show();
+                }
+                else if (selectedIndex == 3 && ks.IsKeyDown(Microsoft.Xna.Framework.Input.Keys.Enter))
                 {
                     startScene.hide();
                     helpScene.show();
@@ -126,6 +130,7 @@ namespace CastleDefense
             {
                 if (ks.IsKeyDown(Microsoft.Xna.Framework.Input.Keys.Escape))
                 {
+                    actionScene.RestartGame();
                     hideAllScenes();
                     startScene.show();
                 }
@@ -136,7 +141,7 @@ namespace CastleDefense
 
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.CornflowerBlue);
+            GraphicsDevice.Clear(Color.Bisque);
 
             // TODO: Add your drawing code here
 
