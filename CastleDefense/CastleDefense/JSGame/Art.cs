@@ -11,6 +11,8 @@ namespace CastleDefense
 		public static Texture2D Archer { get; private set; }
 		public static Texture2D Arrow { get; private set; }
 
+		public static Texture2D Bomb { get; private set; }
+
 		public static Texture2D Castle1 { get; private set; }
 		public static Texture2D Castle2 { get; private set; }
 		public static Texture2D Castle3 { get; private set; }
@@ -41,6 +43,8 @@ namespace CastleDefense
 		{
 			Archer = content.Load<Texture2D>("images/Archer");
 			Arrow = content.Load<Texture2D>("images/Arrow");
+
+			Bomb = content.Load<Texture2D>("images/Bomb");
 
 			Castle1 = content.Load<Texture2D>("images/Castle/Castle1");
 			Castle2 = content.Load<Texture2D>("images/Castle/Castle2");
