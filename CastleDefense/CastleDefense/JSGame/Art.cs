@@ -35,6 +35,7 @@ namespace CastleDefense
 
 		public static SpriteFont RegularFont { get; private set; }
 		public static SpriteFont HilightFont { get; private set; }
+		public static SpriteFont TitleFont { get; private set; }
 
 		public static void Load(ContentManager content)
 		{
@@ -61,6 +62,7 @@ namespace CastleDefense
 
 			RegularFont = content.Load<SpriteFont>("fonts/regularFont");
 			HilightFont = content.Load<SpriteFont>("fonts/hilightFont");
+			TitleFont = content.Load<SpriteFont>("fonts/titleFont");
 		}
 	}
 }
