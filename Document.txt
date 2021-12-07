@@ -1,0 +1,12 @@
+Enemey Speed
+=> Level Dynamic Random
+rand.Next(1, ActionScene.Level)
+
+=> Level Random
+
+Archer Delay
+private int delay = (int)(4 - ActionScene.Level * 0.01);
+
+Bomb
+=> No score
+
