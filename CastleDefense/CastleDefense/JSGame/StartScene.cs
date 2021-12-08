@@ -38,6 +38,7 @@ namespace CastleDefense
             spriteBatch.Begin();
             // spriteBatch.DrawString(titleFont, "Castle Defense", Shared.stage / 2, Color.Black, 0f, );
             DrawRightAlignedString(titleFont, "Castle Defense", 50f);
+            DrawRightAlignedString(hilightFont, "Welcome, " + Game1.PlayerName + ". Select a menu and hit enter.", 200f);
             spriteBatch.End();
 
             base.Draw(gameTime);
