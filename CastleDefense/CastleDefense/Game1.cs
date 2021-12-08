@@ -75,6 +75,7 @@ namespace CastleDefense
             // TODO: use this.Content to load your game content
 
             Art.Load(Content);
+            Font.Load(Content);
             Sound.Load(Content);
 
             // Music Player
