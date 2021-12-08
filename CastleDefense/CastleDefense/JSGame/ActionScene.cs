@@ -12,8 +12,6 @@ namespace CastleDefense
 {
     public class ActionScene : GameScene
     {
-        private SoundEffect arrowSound;
-
         bool paused = false;
 
         public static int Level { get; set; } = 1;
@@ -47,6 +45,7 @@ namespace CastleDefense
                     EntityManager.Add(new Bomb(new Vector2(1200, 950)));
                     EntityManager.Add(new Bomb(new Vector2(1400, 950)));
                     EntityManager.EmptyEnemies();
+                    Sound.ExplosionSoundEffect.Play();
                     BombCount--;
                 }
 
@@ -101,8 +100,8 @@ namespace CastleDefense
                 string text = "Game Over\n" + "Your Level: " + Level + "\n" +
                 "Your Score: " + Score + "\n" + "Press ESC to Quit";
 
-                Vector2 textSize = Art.RegularFont.MeasureString(text);
-                spriteBatch.DrawString(Art.RegularFont, text, Shared.stage / 2 - textSize / 2, Color.White);
+                Vector2 textSize = Font.RegularFont.MeasureString(text);
+                spriteBatch.DrawString(Font.RegularFont, text, Shared.stage / 2 - textSize / 2, Color.White);
             }
             spriteBatch.End();
             
@@ -139,7 +138,7 @@ namespace CastleDefense
 
         private void DrawTitleSafeAlignedString(string text, Vector2 pos)
         {
-            spriteBatch.DrawString(Art.RegularFont, text, pos, Color.White);
+            spriteBatch.DrawString(Font.RegularFont, text, pos, Color.White);
         }
 
         public void RestartGame()
