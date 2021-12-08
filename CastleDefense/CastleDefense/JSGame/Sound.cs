@@ -10,10 +10,15 @@ namespace CastleDefense
     static class Sound
     {
         public static Song Music { get; private set; }
+		public static SoundEffect ArrowShootSoundEffect { get; private set; }
+		public static SoundEffect ExplosionSoundEffect { get; private set; }
 
 		public static void Load(ContentManager content)
 		{
-			Music = content.Load<Song>("songs/Song1");
+			Music = content.Load<Song>("songs/Song");
+
+			ArrowShootSoundEffect = content.Load<SoundEffect>("sounds/Shoot");
+			ExplosionSoundEffect = content.Load<SoundEffect>("sounds/Explosion");
 		}
 	}
 }
