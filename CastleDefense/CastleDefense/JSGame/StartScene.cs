@@ -25,9 +25,9 @@ namespace CastleDefense
 
             spriteBatch = g._spriteBatch;
 
-            regularFont = Art.RegularFont;
-            hilightFont = Art.HilightFont;
-            titleFont = Art.TitleFont;
+            regularFont = Font.RegularFont;
+            hilightFont = Font.HilightFont;
+            titleFont = Font.TitleFont;
 
             menu = new MenuComponent(g, spriteBatch, regularFont, hilightFont, menuItems);
             this.SceneComponents.Add(menu);
