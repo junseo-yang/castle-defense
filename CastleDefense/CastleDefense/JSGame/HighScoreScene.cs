@@ -21,10 +21,10 @@ namespace CastleDefense
             Game1 g = (Game1)game;
             spriteBatch = g._spriteBatch;
 
-            regularFont = Art.RegularFont;
-            hilightFont = Art.HilightFont;
-            titleFont = Art.TitleFont;
-            scoreFont = Art.ScoreFont;
+            regularFont = Font.RegularFont;
+            hilightFont = Font.HilightFont;
+            titleFont = Font.TitleFont;
+            scoreFont = Font.ScoreFont;
 
             scores = new List<string[]>();
         }
