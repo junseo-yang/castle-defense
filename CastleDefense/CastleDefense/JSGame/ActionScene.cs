@@ -20,7 +20,7 @@ namespace CastleDefense
         public static int Score = 0;
         public int OldScore { get; set; } = -1;
 
-        public int BombCount { get; set; } = 5;
+        public int BombCount { get; set; } = 0;
 
         public ActionScene(Game game) : base(game)
         {
@@ -49,7 +49,6 @@ namespace CastleDefense
                     EntityManager.EmptyEnemies();
                     BombCount--;
                 }
-                    
 
                 if (!paused)
                 {
@@ -67,6 +66,7 @@ namespace CastleDefense
                         EntityManager.EmptyArrows();
                         System.Windows.Forms.MessageBox.Show("Congratulations! You passed Level " + Level, "Castle Defense");
                         Level++;
+                        BombCount = (int)(Level * 0.2);
                         OldScore = Score;
                         paused = false;
                     }
@@ -116,7 +116,7 @@ namespace CastleDefense
             string updatedRecord = "";
             using (StreamReader reader = new StreamReader(Game1.FileName))
             {
-                records = reader.ReadToEnd().Split("\n", StringSplitOptions.RemoveEmptyEntries);
+                records = reader.ReadToEnd().Split(new char[] { '\n', '\r' }, StringSplitOptions.RemoveEmptyEntries);
             }
 
             using (StreamWriter writer = new StreamWriter(Game1.FileName, append: false))
@@ -146,7 +146,7 @@ namespace CastleDefense
         {
             Score = 0;
             Level = 1;
-            BombCount = 5;
+            BombCount = 0;
             ArcherStatus.IsGameOver = false;
             Archer.IsDead = false;
             EntityManager.EmptyEnemies();
