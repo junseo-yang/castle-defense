@@ -98,6 +98,7 @@ namespace CastleDefense
                         if (aim.X < 0)
                         {
                             EntityManager.Add(new Arrow(new Vector2(900, 395), aim));
+                            Sound.ArrowShootSoundEffect.Play();
                         }
                     }
                 }
