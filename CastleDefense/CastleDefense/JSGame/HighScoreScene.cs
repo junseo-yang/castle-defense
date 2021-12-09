@@ -48,7 +48,15 @@ namespace CastleDefense
 
         public override void Update(GameTime gameTime)
         {
-            LoadScores();
+            try
+            {
+                LoadScores();
+            }
+            catch (Exception)
+            {
+                System.Windows.Forms.MessageBox.Show("The Save file is contaminated.", "Castle Defense");
+            }
+            
 
             base.Update(gameTime);
         }
