@@ -27,7 +27,7 @@ namespace CastleDefense
 
             Position += Velocity;
 
-            // delete bullets that go off-screen
+            // delete arrows that go off-screen
             if (Position.X < Vector2.Zero.X || Position.Y < Vector2.Zero.Y || Position.X > Shared.stage.X || Position.Y > Shared.stage.Y)
             {
                 IsExpired = true;
