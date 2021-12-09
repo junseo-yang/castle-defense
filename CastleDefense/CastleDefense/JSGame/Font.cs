@@ -6,7 +6,7 @@ using System.Text;
 
 namespace CastleDefense
 {
-    class Font
+    static class Font
     {
         public static SpriteFont RegularFont { get; private set; }
         public static SpriteFont HilightFont { get; private set; }
