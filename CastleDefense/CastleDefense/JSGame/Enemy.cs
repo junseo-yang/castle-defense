@@ -103,8 +103,6 @@ namespace CastleDefense
                     // spriteBatch.Draw(tex, position, frames[(int)Direction.Up, 0], Color.White);
                 }
             }
-
-            // base.Draw(spriteBatch);
         }
 
         public override void Update()
@@ -116,10 +114,6 @@ namespace CastleDefense
                 {
                     ChangeState(State.Move);
                 }
-                //if (Position.X >= Shared.stage.X - 500)
-                //{
-                //    ChangeState(State.Idle);
-                //}
 
                 // Increase delayCounter
                 delayCounter++;
