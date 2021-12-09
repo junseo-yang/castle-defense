@@ -38,28 +38,6 @@ namespace CastleDefense
 			return lastGamepadState.IsButtonUp(button) && gamepadState.IsButtonDown(button);
 		}
 
-		public static Vector2 GetMovementDirection()
-		{
-
-			Vector2 direction = gamepadState.ThumbSticks.Left;
-			direction.Y *= -1;  // invert the y-axis
-
-			if (keyboardState.IsKeyDown(Keys.A))
-				direction.X -= 1;
-			if (keyboardState.IsKeyDown(Keys.D))
-				direction.X += 1;
-			if (keyboardState.IsKeyDown(Keys.W))
-				direction.Y -= 1;
-			if (keyboardState.IsKeyDown(Keys.S))
-				direction.Y += 1;
-
-			// Clamp the length of the vector to a maximum of 1.
-			if (direction.LengthSquared() > 1)
-				direction.Normalize();
-
-			return direction;
-		}
-
 		public static Vector2 GetAimDirection()
 		{
 			return GetMouseAimDirection();
@@ -72,16 +50,6 @@ namespace CastleDefense
 			Debug.WriteLine($"x: {MousePosition.X} y: {MousePosition.Y}");
 
 			return Vector2.Normalize(direction);
-
-			//if (direction == Vector2.Zero)
-			//	return Vector2.Zero;
-			//else
-			//	return Vector2.Normalize(direction);
-		}
-
-		public static bool WasBombButtonPressed()
-		{
-			return WasButtonPressed(Buttons.LeftTrigger) || WasButtonPressed(Buttons.RightTrigger) || WasKeyPressed(Keys.Space);
 		}
 	}    
 }
