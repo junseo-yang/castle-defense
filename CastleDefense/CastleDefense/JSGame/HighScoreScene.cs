@@ -36,7 +36,7 @@ namespace CastleDefense
             spriteBatch.Begin();
             // spriteBatch.DrawString(titleFont, "Castle Defense", Shared.stage / 2, Color.Black, 0f, );
             DrawRightAlignedString(titleFont, "Castle Defense", 50f);
-            DrawRightAlignedString(regularFont, "Top 5 High Score", 200f);
+            DrawRightAlignedString(regularFont, "Top 5 High Score.\nPress ESC to quit.", 150f);
             DrawRightAlignedString(scoreFont, String.Format("{0,-30} {1,-15} {2,-15}", "Player Name", "Level", "Score"), 250f);
 
             int i = 0;
