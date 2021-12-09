@@ -32,6 +32,9 @@ namespace CastleDefense
 		public static Texture2D Background8 { get; private set; }
 		public static Texture2D Background9 { get; private set; }
 
+		public static Texture2D HelpScene1 { get; private set; }
+		public static Texture2D HelpScene2 { get; private set; }
+
 		public static void Load(ContentManager content)
 		{
 			Archer = content.Load<Texture2D>("images/Archer");
@@ -56,6 +59,9 @@ namespace CastleDefense
 			Background3 = content.Load<Texture2D>("images/Background/Background3");
 			Background4 = content.Load<Texture2D>("images/Background/Background4");
 			Background5 = content.Load<Texture2D>("images/Background/Background5");
+
+			HelpScene1 = content.Load<Texture2D>("help/HelpScene1");
+			HelpScene2 = content.Load<Texture2D>("help/HelpScene2");
 		}
 	}
 }
