@@ -62,7 +62,7 @@ namespace CastleDefense
             {
                 frameIndexCol++;
 
-                // 12.4.	Prevent frameIndex increases beyond  maximum value, Initilaize, Hide
+                // Prevent frameIndex increases beyond  maximum value, Initilaize, Hide
                 if (frameIndexCol >= COL * ROW)
                 {
                     IsExpired = true;
