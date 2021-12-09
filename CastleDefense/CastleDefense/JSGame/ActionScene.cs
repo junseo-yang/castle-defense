@@ -55,7 +55,7 @@ namespace CastleDefense
                     EnemySpawner.Update();
                 }
 
-                if (Score % 2 == 0 && Score != 0 && !paused && OldScore != Score)
+                if (Score % 20 == 0 && Score != 0 && !paused && OldScore != Score)
                 {
                     if (!Archer.IsDead)
                     {
