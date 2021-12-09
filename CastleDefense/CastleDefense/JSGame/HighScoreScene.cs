@@ -9,22 +9,12 @@ namespace CastleDefense
 {
     public class HighScoreScene : GameScene
     {
-        SpriteFont regularFont;
-        SpriteFont hilightFont;
-        SpriteFont titleFont;
-        SpriteFont scoreFont;
-
         List<string[]> scores;
 
         public HighScoreScene(Game game) : base(game)
         {
             Game1 g = (Game1)game;
             spriteBatch = g._spriteBatch;
-
-            regularFont = Font.RegularFont;
-            hilightFont = Font.HilightFont;
-            titleFont = Font.TitleFont;
-            scoreFont = Font.ScoreFont;
 
             scores = new List<string[]>();
         }
@@ -36,7 +26,7 @@ namespace CastleDefense
             spriteBatch.Begin();
             // spriteBatch.DrawString(titleFont, "Castle Defense", Shared.stage / 2, Color.Black, 0f, );
             DrawRightAlignedString(titleFont, "Castle Defense", 50f);
-            DrawRightAlignedString(regularFont, "Top 5 High Score.\nPress ESC to quit.", 150f);
+            DrawRightAlignedString(regularFont, "Top 5 High Score\nPress ESC to quit.", 150f);
             DrawRightAlignedString(scoreFont, String.Format("{0,-30} {1,-15} {2,-15}", "Player Name", "Level", "Score"), 250f);
 
             int i = 0;
@@ -61,12 +51,6 @@ namespace CastleDefense
             LoadScores();
 
             base.Update(gameTime);
-        }
-
-        private void DrawRightAlignedString(SpriteFont spriteFont, string text, float y)
-        {
-            var textWidth = spriteFont.MeasureString(text).X;
-            spriteBatch.DrawString(spriteFont, text, new Vector2((Shared.stage.X - textWidth) / 2, y), Color.Black);
         }
 
         private void LoadScores()

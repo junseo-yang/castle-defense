@@ -12,6 +12,11 @@ namespace CastleDefense
         public SpriteBatch spriteBatch;
         public Texture2D texture2D;
 
+        public SpriteFont titleFont = Font.TitleFont;
+        public SpriteFont regularFont = Font.RegularFont;
+        public SpriteFont hilightFont = Font.HilightFont;
+        public SpriteFont scoreFont = Font.ScoreFont;
+
         public List<GameComponent> SceneComponents { get; set; }
 
         public virtual void show()
@@ -59,6 +64,12 @@ namespace CastleDefense
             }
 
             base.Update(gameTime);
+        }
+
+        public void DrawRightAlignedString(SpriteFont spriteFont, string text, float y)
+        {
+            var textWidth = spriteFont.MeasureString(text).X;
+            spriteBatch.DrawString(spriteFont, text, new Vector2((Shared.stage.X - textWidth) / 2, y), Color.Black);
         }
     }
 }
