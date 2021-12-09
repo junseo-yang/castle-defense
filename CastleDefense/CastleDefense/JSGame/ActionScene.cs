@@ -56,7 +56,7 @@ namespace CastleDefense
                     EnemySpawner.Update();
                 }
 
-                if (Score % 2 == 0 && Score != 0 && !paused && OldScore != Score)
+                if (Score % 20 == 0 && Score != 0 && !paused && OldScore != Score)
                 {
                     if (!Archer.IsDead)
                     {
@@ -77,7 +77,7 @@ namespace CastleDefense
                 }
                 catch (Exception ex)
                 {
-                    System.Windows.Forms.MessageBox.Show("Error: \n" + ex.Message);
+                    System.Windows.Forms.MessageBox.Show("Error: \n" + ex.Message, "Castle Defense");
                 }
 
                 base.Update(gameTime);
