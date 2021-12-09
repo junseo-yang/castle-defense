@@ -134,10 +134,18 @@ namespace CastleDefense
                 {
                     try
                     {
-                        LoadGame();
-                        if (ActionScene.Level == 1 && ActionScene.Score == 0)
+                        if (ArcherStatus.IsGameOver == false)
                         {
-                            System.Windows.Forms.MessageBox.Show("You don't have any game save data. New Game Start.", "Castle Defense");
+                            LoadGame();
+                            if (ActionScene.Level == 1 && ActionScene.Score == 0)
+                            {
+                                System.Windows.Forms.MessageBox.Show("You don't have any game save data. New Game Start.", "Castle Defense");
+                            }
+                        }
+                        else
+                        {
+                            System.Windows.Forms.MessageBox.Show("You lost the previous game. New Game Start.", "Castle Defense");
+                            actionScene.RestartGame();
                         }
                         startScene.hide();
                         actionScene.show();
@@ -173,7 +181,6 @@ namespace CastleDefense
             {
                 if (ks.IsKeyDown(Microsoft.Xna.Framework.Input.Keys.Escape))
                 {
-                    actionScene.RestartGame();
                     hideAllScenes();
                     startScene.show();
                 }
