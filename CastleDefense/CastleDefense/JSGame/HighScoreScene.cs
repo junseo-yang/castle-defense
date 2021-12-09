@@ -54,7 +54,9 @@ namespace CastleDefense
             }
             catch (Exception)
             {
-                System.Windows.Forms.MessageBox.Show("The Save file is contaminated.", "Castle Defense");
+                System.Windows.Forms.MessageBox.Show("The Save file is contaminated. Save File will be deleted. The game will be terminated. Please, rejoin the game", "Castle Defense");
+                File.Delete(Game1.FileName);
+                Game.Exit();
             }
             
 
