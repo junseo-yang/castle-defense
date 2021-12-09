@@ -248,6 +248,12 @@ namespace CastleDefense
                     }
                 } while (!reader.EndOfStream);
             }
+
+            EntityManager.EmptyEnemies();
+            EntityManager.EmptyBombs();
+            EntityManager.EmptyArrows();
+            Castle.Instance.CastleReset();
+            Background.Instance.BackgroundReset();
         }
     }
 }
