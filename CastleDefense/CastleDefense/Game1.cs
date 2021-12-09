@@ -52,18 +52,19 @@ namespace CastleDefense
             Shared.stage = new Vector2(_graphics.PreferredBackBufferWidth,
                 _graphics.PreferredBackBufferHeight);
 
-            //do
-            //{
-            //    SetDirectory();
-            //} while (string.IsNullOrEmpty(FileName));
-
-            CreateSaveFile();
-
-            do
+            try
             {
-                SetPlayerName();
-            } while (string.IsNullOrEmpty(PlayerName));
+                CreateSaveFile();
 
+                do
+                {
+                    SetPlayerName();
+                } while (string.IsNullOrEmpty(PlayerName));
+            }
+            catch (Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show("Error: \n" + ex.Message, "Castle Defense");
+            }
 
             base.Initialize();
         }
@@ -99,6 +100,9 @@ namespace CastleDefense
             highScoreScene = new HighScoreScene(this);
             this.Components.Add(highScoreScene);
 
+            creditScene = new CreditScene(this);
+            this.Components.Add(creditScene);
+
             startScene.show();
         }
 
@@ -131,6 +135,10 @@ namespace CastleDefense
                     try
                     {
                         LoadGame();
+                        if (ActionScene.Level == 1 && ActionScene.Score == 0)
+                        {
+                            System.Windows.Forms.MessageBox.Show("You don't have any game save data. New Game Start.", "Castle Defense");
+                        }
                         startScene.hide();
                         actionScene.show();
                     }
@@ -153,7 +161,7 @@ namespace CastleDefense
                 else if (selectedIndex == CREDIT_SCENE && ks.IsKeyDown(Microsoft.Xna.Framework.Input.Keys.Enter))
                 {
                     startScene.hide();
-                    helpScene.show();
+                    creditScene.show();
                 }
                 else if (selectedIndex == QUIT && ks.IsKeyDown(Microsoft.Xna.Framework.Input.Keys.Enter))
                 {
@@ -161,7 +169,7 @@ namespace CastleDefense
                 }
             }
 
-            if (helpScene.Enabled || actionScene.Enabled || highScoreScene.Enabled)
+            if (helpScene.Enabled || actionScene.Enabled || highScoreScene.Enabled || creditScene.Enabled)
             {
                 if (ks.IsKeyDown(Microsoft.Xna.Framework.Input.Keys.Escape))
                 {
@@ -185,49 +193,15 @@ namespace CastleDefense
 
         public void CreateSaveFile()
         {
-            try
+            if (!File.Exists(FileName))
             {
-                //System.Windows.Forms.MessageBox.Show("Before we start this game, you need to specify a location to create a game data save file to save scores.", "Catle Defense");
-
-                //using (var fbd = new FolderBrowserDialog())
-                //{
-                //    DialogResult result = fbd.ShowDialog();
-
-                //    if (result == DialogResult.OK && !string.IsNullOrWhiteSpace(fbd.SelectedPath))
-                //    {
-                //        FileName = fbd.SelectedPath + "\\CastleDefenseSave.txt";
-
-                //        if (!File.Exists(FileName))
-                //        {
-                //            File.Create(FileName).Dispose();
-                //            System.Windows.Forms.MessageBox.Show("CastleDefenseSave.txt is created under selected location.", "Castle Defense");
-                //        }
-                //        else
-                //        {
-                //            System.Windows.Forms.MessageBox.Show("CastleDefenseSave.txt is already created under selected location.", "Castle Defense");
-                //        }
-                //    }
-                //}
-
-                if (!File.Exists(FileName))
-                {
-                    File.Create(FileName).Dispose();
-                    // System.Windows.Forms.MessageBox.Show("CastleDefenseSave.txt is created under selected location.", "Castle Defense");
-                }
-                //else
-                //{
-                //    System.Windows.Forms.MessageBox.Show("CastleDefenseSave.txt is already created under selected location.", "Castle Defense");
-                //}
-            }
-            catch (Exception ex)
-            {
-                System.Windows.Forms.MessageBox.Show("Error: \n" + ex.Message);
+                File.Create(FileName).Dispose();
             }
         }
 
         private void SetPlayerName()
         {
-            InputBox inputBox = new InputBox("Player Name", "You need to enter a player name to play.");
+            InputBox inputBox = new InputBox("Castle Defense", "You need to enter a player name to play.");
             PlayerName = inputBox.GetName();
 
             string[] records;
@@ -241,7 +215,7 @@ namespace CastleDefense
                 if (item.StartsWith(PlayerName))
                 {
                     PlayerName = null;
-                    System.Windows.Forms.MessageBox.Show("The Player Name already exists.");
+                    System.Windows.Forms.MessageBox.Show("The Player Name already exists.", "Castle Defense");
                     return;
                 }
             }
@@ -256,7 +230,6 @@ namespace CastleDefense
         {
             using (StreamReader reader = new StreamReader(FileName))
             {
-                // InputBox inputBox = new InputBox("Player Name", "You need to enter a player name to play.");
                 do
                 {
                     string[] record = reader.ReadLine().Split("\t", StringSplitOptions.RemoveEmptyEntries);
@@ -266,7 +239,7 @@ namespace CastleDefense
                         ActionScene.Score = int.Parse(record[2]);
                         break;
                     }
-                } while (reader.EndOfStream);
+                } while (!reader.EndOfStream);
             }
         }
     }
