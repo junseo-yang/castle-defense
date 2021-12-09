@@ -1,0 +1,202 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="CastleDefense.ActionScene">
+    <Position X="2.25" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACQAAAAAAAACAggAAAAAAAAgAAAAAAABAAAAAAAA4AA=</HashCode>
+      <FileName>JSGame\ActionScene.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CastleDefense.Archer">
+    <Position X="14.75" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAEAAgAAAAAAEQgAAABIAAEAQAAAAQAAAAA=</HashCode>
+      <FileName>JSGame\Archer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CastleDefense.ArcherStatus">
+    <Position X="23.75" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAACAAAA=</HashCode>
+      <FileName>JSGame\ArcherStatus.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CastleDefense.Arrow">
+    <Position X="20" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAEAAAAAAAA=</HashCode>
+      <FileName>JSGame\Arrow.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CastleDefense.Art">
+    <Position X="27.5" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAQChAEADABDAJAABAAAAAAEAAEAAAACAAgACEALAAA=</HashCode>
+      <FileName>JSGame\Art.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CastleDefense.Background">
+    <Position X="13" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACQAAIAAAAIAAAAAAAAAAAAAAABAAAAAQABAAAAAAAA=</HashCode>
+      <FileName>JSGame\Background.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CastleDefense.Bomb">
+    <Position X="16.5" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAEABgAAAAAAAQhAACAAAAEAAAAAAQAAAAA=</HashCode>
+      <FileName>JSGame\Bomb.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CastleDefense.Castle">
+    <Position X="18.25" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQQAIAAAAAAAAAAAAAAQAAAAABAAAAAQABAAAAAAAA=</HashCode>
+      <FileName>JSGame\Castle.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CastleDefense.CreditScene">
+    <Position X="7.5" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAgAAAAAACAAAAAAAADAAABACAAAAAAA=</HashCode>
+      <FileName>JSGame\CreditScene.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CastleDefense.Enemy">
+    <Position X="21.75" Y="5" Width="1.5" />
+    <NestedTypes>
+      <Enum Name="CastleDefense.Enemy.State" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>JSGame\Enemy.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>IIQQAIAAAAEABgAAMAAIAwhAACAAgAEAAAAAAQgAAAA=</HashCode>
+      <FileName>JSGame\Enemy.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CastleDefense.EnemySpawner">
+    <Position X="23.75" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAIAAAACABAAAAAAAAAAAAAAAAAAAAAAEAAAAAAA=</HashCode>
+      <FileName>JSGame\EnemySpawner.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CastleDefense.Entity">
+    <Position X="17.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQIAAAIAQAAwgAgAAAAAAAAEAAAAACAAAAAAAgEAAA=</HashCode>
+      <FileName>JSGame\Entity.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CastleDefense.EntityManager">
+    <Position X="23.75" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAYAAAIAAAAAAhAAAAQAwAQAAAAAAQABAIEQAAMIAAA=</HashCode>
+      <FileName>JSGame\EntityManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CastleDefense.Extensions">
+    <Position X="25.75" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAQAAAAAAAAAAAAAAAAAAAAACAAAAAIAAIAAAAAAA=</HashCode>
+      <FileName>JSGame\Extensions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CastleDefense.Font">
+    <Position X="27.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAAAAAAAAIAAAAAAAAEAAAAAAAAAAgAAAQAAA=</HashCode>
+      <FileName>JSGame\Font.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CastleDefense.GameScene">
+    <Position X="5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAIEAAAAAAAgAAAAAAABAAAAAAAAAABAAABAAAAAA=</HashCode>
+      <FileName>JSGame\GameScene.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CastleDefense.HelpScene">
+    <Position X="4" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>JSGame\HelpScene.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CastleDefense.HighScoreScene">
+    <Position X="5.75" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAABAAAAAgAAAAAICAAAAAAAADAAABACAAAAAAA=</HashCode>
+      <FileName>JSGame\HighScoreScene.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CastleDefense.Input">
+    <Position X="25.75" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAMIAAAAAAAEAAAAAAAYAAAAgAAIAAAAAAAQDAAA=</HashCode>
+      <FileName>JSGame\Input.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CastleDefense.InputBox">
+    <Position X="25.75" Y="8.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAABAA=</HashCode>
+      <FileName>JSGame\InputBox.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CastleDefense.MenuComponent">
+    <Position X="11" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAQAAEAAAAgAAgAAAAAQKAIAAAAAABAQAIACAAAAAAA=</HashCode>
+      <FileName>JSGame\MenuComponent.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CastleDefense.Shared">
+    <Position X="25.75" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAA=</HashCode>
+      <FileName>JSGame\Shared.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CastleDefense.Sound">
+    <Position X="27.5" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAEAAAAAAAAAAAAAAAAIAgAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>JSGame\Sound.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CastleDefense.StartScene">
+    <Position X="9.25" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAgAAAAAQCAgAAAAIADAAAAACAAAAAAA=</HashCode>
+      <FileName>JSGame\StartScene.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CastleDefense.Game1">
+    <Position X="0.5" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAUAAiACgEAAQwAAEAAABAAAAEAAgAAiAIABAARAACU=</HashCode>
+      <FileName>Game1.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CastleDefense.Program">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Program.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Microsoft.Xna.Framework.DrawableGameComponent" Collapsed="true">
+    <Position X="5" Y="0.5" Width="1.5" />
+    <TypeIdentifier />
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Microsoft.Xna.Framework.Game" Collapsed="true">
+    <Position X="0.5" Y="2" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
