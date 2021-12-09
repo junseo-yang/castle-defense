@@ -23,7 +23,6 @@ namespace CastleDefense
             }
         }
 
-        int framesUntilRespawn = 0;
         public static bool IsDead = false;
 
         /* Animation */
