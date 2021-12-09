@@ -13,12 +13,6 @@
 
 #---------------------------------- Content ---------------------------------#
 
-#begin ../../../../Resources/sounds/Shoot.wav
-/importer:WavImporter
-/processor:SoundEffectProcessor
-/processorParam:Quality=Best
-/build:../../../../Resources/sounds/Shoot.wav;sounds/Shoot.wav
-
 #begin fonts/hilightFont.spritefont
 /importer:FontDescriptionImporter
 /processor:FontDescriptionProcessor
@@ -298,4 +292,10 @@
 /processor:SoundEffectProcessor
 /processorParam:Quality=Best
 /build:sounds/Explosion.wav
+
+#begin sounds/Shoot.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:sounds/Shoot.wav
 
