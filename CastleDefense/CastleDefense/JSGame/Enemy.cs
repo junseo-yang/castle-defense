@@ -48,7 +48,6 @@ namespace CastleDefense
             // Generate Random Enemy by Level
             image = EnemyImageList[rand.Next(0, ActionScene.Level) % EnemyImageList.Count];
             Position = position;
-            //Radius = image.Width / 2f;
             color = Color.White;
             PointValue = 1;
 
@@ -98,10 +97,6 @@ namespace CastleDefense
                         spriteBatch.Draw(image, Position, frames[frameIndexRow, 0], Color.White, 0f, Origin, 1f, SpriteEffects.None, 0);
                     }
                 }
-                else
-                {
-                    // spriteBatch.Draw(tex, position, frames[(int)Direction.Up, 0], Color.White);
-                }
             }
         }
 
@@ -122,7 +117,7 @@ namespace CastleDefense
                 {
                     frameIndexCol++;
 
-                    // 12.4.	Prevent frameIndex increases beyond  maximum value, Initilaize, Hide
+                    // Prevent frameIndex increases beyond  maximum value, Initilaize, Hide
                     if (frameIndexCol >= COL)
                     {
                         frameIndexCol = -1;
@@ -137,8 +132,6 @@ namespace CastleDefense
             {
                 timeUntilStart--;
             }            
-
-            // srcRectangle = frames[frameIndexRow, frameIndexCol];
         }        
 
         private void ChangeState(State state)

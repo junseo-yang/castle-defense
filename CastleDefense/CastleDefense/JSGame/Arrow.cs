@@ -9,14 +9,13 @@ namespace CastleDefense
 {
     class Arrow : Entity
     {
-        public int ArrowSpeed { get; set; } = (int)(1 + ActionScene.Level * 0.02);
+        public int ArrowSpeed { get; set; } = (int)(10 + ActionScene.Level * 0.02);
 
         public Arrow(Vector2 position, Vector2 velocity)
         {
             image = Art.Arrow;
             Position = position;
-            // Velocity = velocity * ArrowSpeed;
-            Velocity = velocity * 10;
+            Velocity = velocity * ArrowSpeed;
             Orientation = Velocity.ToAngle();
         }
 

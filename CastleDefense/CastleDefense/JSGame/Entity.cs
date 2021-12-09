@@ -10,7 +10,6 @@ namespace CastleDefense
     {
 		protected Texture2D image;
 		protected Rectangle? srcRectangle = null;
-		// The tint of the image. This will also allow us to change the transparency.
 		protected Color color = Color.White;
 
 		public Vector2 Position, Velocity, Origin;

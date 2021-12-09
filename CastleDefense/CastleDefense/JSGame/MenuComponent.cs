@@ -16,9 +16,6 @@ namespace CastleDefense
 
         public int SelectedIndex { get; set; }
         private Vector2 position;
-        private Vector2 origin;
-        private Color regularColor = Color.Black;
-        private Color hilightColor = Color.Red;
 
         private KeyboardState oldState;
 

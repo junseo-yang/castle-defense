@@ -47,8 +47,6 @@ namespace CastleDefense
 		{
 			Vector2 direction = MousePosition - new Vector2(900, 395);
 
-			Debug.WriteLine($"x: {MousePosition.X} y: {MousePosition.Y}");
-
 			return Vector2.Normalize(direction);
 		}
 	}    

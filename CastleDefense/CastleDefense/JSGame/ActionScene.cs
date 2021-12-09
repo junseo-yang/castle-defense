@@ -51,7 +51,6 @@ namespace CastleDefense
 
                 if (!paused)
                 {
-                    // PlayerStatus.Update();
                     EntityManager.Update();
                     EnemySpawner.Update();
                 }
