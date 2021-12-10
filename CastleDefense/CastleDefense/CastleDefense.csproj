@@ -8,8 +8,30 @@
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationManifest>app.manifest</ApplicationManifest>
-    <ApplicationIcon>Icon.ico</ApplicationIcon>
+    <ApplicationIcon>Castle.ico</ApplicationIcon>
+    <Authors>Junseo Yang</Authors>
+    <Company>Junseo Yang</Company>
+    <Description>PROG2370 - Game Programming with Data Structures Final Project</Description>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>JS_key.pfx</AssemblyOriginatorKeyFile>
   </PropertyGroup>
+  <ItemGroup>
+    <Compile Remove="JSGame\Castle\**" />
+    <Compile Remove="JSGame\Enemy\**" />
+    <Compile Remove="JSGame\Extensions\**" />
+    <Compile Remove="JSGame\Manager\**" />
+    <Compile Remove="JSGame\Scenes\**" />
+    <EmbeddedResource Remove="JSGame\Castle\**" />
+    <EmbeddedResource Remove="JSGame\Enemy\**" />
+    <EmbeddedResource Remove="JSGame\Extensions\**" />
+    <EmbeddedResource Remove="JSGame\Manager\**" />
+    <EmbeddedResource Remove="JSGame\Scenes\**" />
+    <None Remove="JSGame\Castle\**" />
+    <None Remove="JSGame\Enemy\**" />
+    <None Remove="JSGame\Extensions\**" />
+    <None Remove="JSGame\Manager\**" />
+    <None Remove="JSGame\Scenes\**" />
+  </ItemGroup>
   <ItemGroup>
     <TrimmerRootAssembly Include="Microsoft.Xna.Framework.Content.ContentTypeReader" Visible="false" />
   </ItemGroup>
@@ -19,5 +41,10 @@
   </ItemGroup>
   <ItemGroup>
     <MonoGameContentReference Include="Content\Content.mgcb" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Content\help\" />
+    <Folder Include="Content\images\Background\" />
+    <Folder Include="Content\songs\" />
   </ItemGroup>
 </Project>
