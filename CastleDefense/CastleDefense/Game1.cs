@@ -40,7 +40,7 @@ namespace CastleDefense
             _graphics = new GraphicsDeviceManager(this);
             _graphics.PreferredBackBufferWidth = 1300;
             _graphics.PreferredBackBufferHeight = 600;
-            Content.RootDirectory = "Content";
+            Content.RootDirectory = "Content/bin/Windows";
             _graphics.GraphicsProfile = GraphicsProfile.HiDef;
             IsMouseVisible = true;
         }
