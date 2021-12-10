@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
     <TargetFramework>netcoreapp3.1</TargetFramework>
@@ -33,6 +33,122 @@
     <None Remove="JSGame\Scenes\**" />
   </ItemGroup>
   <ItemGroup>
+    <None Remove="Content\bin\Windows\fonts\hilightFont.xnb" />
+    <None Remove="Content\bin\Windows\fonts\regularFont.xnb" />
+    <None Remove="Content\bin\Windows\fonts\scoreFont.xnb" />
+    <None Remove="Content\bin\Windows\fonts\titleFont.xnb" />
+    <None Remove="Content\bin\Windows\help\HelpScene1.xnb" />
+    <None Remove="Content\bin\Windows\help\HelpScene2.xnb" />
+    <None Remove="Content\bin\Windows\images\Archer.xnb" />
+    <None Remove="Content\bin\Windows\images\Arrow.xnb" />
+    <None Remove="Content\bin\Windows\images\Background\Background1.xnb" />
+    <None Remove="Content\bin\Windows\images\Background\Background2.xnb" />
+    <None Remove="Content\bin\Windows\images\Background\Background3.xnb" />
+    <None Remove="Content\bin\Windows\images\Background\Background4.xnb" />
+    <None Remove="Content\bin\Windows\images\Background\Background5.xnb" />
+    <None Remove="Content\bin\Windows\images\Bomb.xnb" />
+    <None Remove="Content\bin\Windows\images\Castle\Castle1.xnb" />
+    <None Remove="Content\bin\Windows\images\Castle\Castle1Destroyed.xnb" />
+    <None Remove="Content\bin\Windows\images\Castle\Castle2.xnb" />
+    <None Remove="Content\bin\Windows\images\Castle\Castle2Destroyed.xnb" />
+    <None Remove="Content\bin\Windows\images\Castle\Castle3.xnb" />
+    <None Remove="Content\bin\Windows\images\Castle\Castle3Destroyed.xnb" />
+    <None Remove="Content\bin\Windows\images\Enemy\MadZombie.xnb" />
+    <None Remove="Content\bin\Windows\images\Enemy\NormalZombie.xnb" />
+    <None Remove="Content\bin\Windows\images\Enemy\RedBat.xnb" />
+    <None Remove="Content\bin\Windows\images\Enemy\Samurai.xnb" />
+    <None Remove="Content\bin\Windows\songs\Song.wma" />
+    <None Remove="Content\bin\Windows\songs\Song.xnb" />
+    <None Remove="Content\bin\Windows\sounds\Explosion.xnb" />
+    <None Remove="Content\bin\Windows\sounds\Shoot.xnb" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\bin\Windows\fonts\hilightFont.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\fonts\regularFont.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\fonts\scoreFont.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\fonts\titleFont.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\help\HelpScene1.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\help\HelpScene2.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\images\Archer.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\images\Arrow.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\images\Background\Background1.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\images\Background\Background2.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\images\Background\Background3.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\images\Background\Background4.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\images\Background\Background5.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\images\Bomb.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\images\Castle\Castle1.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\images\Castle\Castle1Destroyed.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\images\Castle\Castle2.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\images\Castle\Castle2Destroyed.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\images\Castle\Castle3.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\images\Castle\Castle3Destroyed.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\images\Enemy\MadZombie.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\images\Enemy\NormalZombie.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\images\Enemy\RedBat.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\images\Enemy\Samurai.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\songs\Song.wma">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\songs\Song.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\sounds\Explosion.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\sounds\Shoot.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
     <TrimmerRootAssembly Include="Microsoft.Xna.Framework.Content.ContentTypeReader" Visible="false" />
   </ItemGroup>
   <ItemGroup>
@@ -43,8 +159,74 @@
     <MonoGameContentReference Include="Content\Content.mgcb" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Content\help\" />
-    <Folder Include="Content\images\Background\" />
-    <Folder Include="Content\songs\" />
+    <None Update="Content\fonts\hilightFont.spritefont">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </None>
+    <None Update="Content\fonts\regularFont.spritefont">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </None>
+    <None Update="Content\fonts\scoreFont.spritefont">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </None>
+    <None Update="Content\fonts\titleFont.spritefont">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </None>
+    <None Update="Content\help\HelpScene1.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </None>
+    <None Update="Content\help\HelpScene2.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </None>
+    <None Update="Content\images\Background1.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </None>
+    <None Update="Content\images\Background2.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </None>
+    <None Update="Content\images\Background3.jpg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </None>
+    <None Update="Content\images\Background4.jpg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </None>
+    <None Update="Content\images\Background5.jpg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </None>
+    <None Update="Content\images\Castle1.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </None>
+    <None Update="Content\images\Castle1Destroyed.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </None>
+    <None Update="Content\images\Castle2.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </None>
+    <None Update="Content\images\Castle2Destroyed.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </None>
+    <None Update="Content\images\Castle3.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </None>
+    <None Update="Content\images\Castle3Destroyed.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </None>
+    <None Update="Content\images\MadZombie.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </None>
+    <None Update="Content\images\NormalZombie.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </None>
+    <None Update="Content\images\RedBat.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </None>
+    <None Update="Content\images\Samurai.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </None>
+    <None Update="Content\images\Wolf.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Content\images\" />
   </ItemGroup>
 </Project>
