@@ -209,27 +209,34 @@ namespace CastleDefense
         private void SetPlayerName()
         {
             InputBox inputBox = new InputBox("Castle Defense", "You need to enter a player name to play.");
-            PlayerName = inputBox.GetName();
-
-            string[] records;
-            using (StreamReader reader = new StreamReader(Game1.FileName))
+            if (string.IsNullOrEmpty(inputBox.GetName()) || string.IsNullOrWhiteSpace(inputBox.GetName()))
             {
-                records = reader.ReadToEnd().Split(new char[] { '\n', '\r' }, StringSplitOptions.RemoveEmptyEntries);
+                System.Windows.Forms.MessageBox.Show("Player Name cannot be empty.", "Castle Defense");
             }
-
-            foreach (var item in records)
+            else
             {
-                if (item.StartsWith(PlayerName))
+                PlayerName = inputBox.GetName();
+
+                string[] records;
+                using (StreamReader reader = new StreamReader(Game1.FileName))
                 {
-                    PlayerName = null;
-                    System.Windows.Forms.MessageBox.Show("The Player Name already exists.", "Castle Defense");
-                    return;
+                    records = reader.ReadToEnd().Split(new char[] { '\n', '\r' }, StringSplitOptions.RemoveEmptyEntries);
                 }
-            }
 
-            using (StreamWriter writer = new StreamWriter(FileName, append: true))
-            {
-                writer.WriteLine(Game1.PlayerName + "\t" + ActionScene.Level + "\t" + ActionScene.Score);
+                foreach (var item in records)
+                {
+                    if (item.StartsWith(PlayerName))
+                    {
+                        PlayerName = null;
+                        System.Windows.Forms.MessageBox.Show("The Player Name already exists.", "Castle Defense");
+                        return;
+                    }
+                }
+
+                using (StreamWriter writer = new StreamWriter(FileName, append: true))
+                {
+                    writer.WriteLine(Game1.PlayerName + "\t" + ActionScene.Level + "\t" + ActionScene.Score);
+                }
             }
         }
 
