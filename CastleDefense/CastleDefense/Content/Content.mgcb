@@ -173,7 +173,7 @@
 /processorParam:TextureFormat=Color
 /build:images/Castle/Castle1.png
 
-#begin images/Castle/Castle1Destoryed.png
+#begin images/Castle/Castle1Destroyed.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -183,7 +183,7 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:images/Castle/Castle1Destoryed.png
+/build:images/Castle/Castle1Destroyed.png
 
 #begin images/Castle/Castle2.png
 /importer:TextureImporter
@@ -197,7 +197,7 @@
 /processorParam:TextureFormat=Color
 /build:images/Castle/Castle2.png
 
-#begin images/Castle/Castle2Destoryed.png
+#begin images/Castle/Castle2Destroyed.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -207,7 +207,7 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:images/Castle/Castle2Destoryed.png
+/build:images/Castle/Castle2Destroyed.png
 
 #begin images/Castle/Castle3.png
 /importer:TextureImporter
@@ -221,7 +221,7 @@
 /processorParam:TextureFormat=Color
 /build:images/Castle/Castle3.png
 
-#begin images/Castle/Castle3Destoryed.png
+#begin images/Castle/Castle3Destroyed.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -231,7 +231,7 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:images/Castle/Castle3Destoryed.png
+/build:images/Castle/Castle3Destroyed.png
 
 #begin images/Enemy/MadZombie.png
 /importer:TextureImporter
