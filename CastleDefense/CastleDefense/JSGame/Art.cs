@@ -45,9 +45,9 @@ namespace CastleDefense
 			Castle1 = content.Load<Texture2D>("images/Castle/Castle1");
 			Castle2 = content.Load<Texture2D>("images/Castle/Castle2");
 			Castle3 = content.Load<Texture2D>("images/Castle/Castle3");
-			Castle1Destroyed = content.Load<Texture2D>("images/Castle/Castle1Destoryed");
-			Castle2Destroyed = content.Load<Texture2D>("images/Castle/Castle2Destoryed");
-			Castle3Destroyed = content.Load<Texture2D>("images/Castle/Castle3Destoryed");
+			Castle1Destroyed = content.Load<Texture2D>("images/Castle/Castle1Destroyed");
+			Castle2Destroyed = content.Load<Texture2D>("images/Castle/Castle2Destroyed");
+			Castle3Destroyed = content.Load<Texture2D>("images/Castle/Castle3Destroyed");
 
 			RedBat = content.Load<Texture2D>("images/Enemy/RedBat");
 			Samurai = content.Load<Texture2D>("images/Enemy/Samurai");
