@@ -248,7 +248,7 @@ namespace CastleDefense
                 do
                 {
                     string[] record = reader.ReadLine().Split("\t", StringSplitOptions.RemoveEmptyEntries);
-                    if (record[0].StartsWith(PlayerName))
+                    if (record[0] == PlayerName)
                     {
                         ActionScene.Level = int.Parse(record[1]);
                         ActionScene.Score = int.Parse(record[2]);
