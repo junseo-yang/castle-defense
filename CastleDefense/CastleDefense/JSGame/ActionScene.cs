@@ -121,7 +121,8 @@ namespace CastleDefense
             {
                 foreach (var item in records)
                 {
-                    if (item.StartsWith(Game1.PlayerName))
+                    string[] field = item.Split("\t");
+                    if (field[0] == Game1.PlayerName)
                     {
                         updatedRecord += Game1.PlayerName + "\t" + Level + "\t" + Score;
                     }

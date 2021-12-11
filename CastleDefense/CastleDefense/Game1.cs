@@ -225,7 +225,8 @@ namespace CastleDefense
 
                 foreach (var item in records)
                 {
-                    if (item.StartsWith(PlayerName))
+                    string[] field = item.Split("\t");
+                    if (field[0] == PlayerName)
                     {
                         PlayerName = null;
                         System.Windows.Forms.MessageBox.Show("The Player Name already exists.", "Castle Defense");
