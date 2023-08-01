@@ -12,8 +12,6 @@
     <Authors>Junseo Yang</Authors>
     <Company>Junseo Yang</Company>
     <Description>PROG2370 - Game Programming with Data Structures Final Project</Description>
-    <SignAssembly>true</SignAssembly>
-    <AssemblyOriginatorKeyFile>JS_key.pfx</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
     <Compile Remove="JSGame\Castle\**" />
@@ -63,88 +61,88 @@
     <None Remove="Content\bin\Windows\sounds\Shoot.xnb" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\bin\Windows\fonts\hilightFont.xnb">
+    <Content Include="Content\bin\Windows\Content\fonts\hilightFont.xnb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\bin\Windows\fonts\regularFont.xnb">
+    <Content Include="Content\bin\Windows\Content\fonts\regularFont.xnb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\bin\Windows\fonts\scoreFont.xnb">
+    <Content Include="Content\bin\Windows\Content\fonts\scoreFont.xnb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\bin\Windows\fonts\titleFont.xnb">
+    <Content Include="Content\bin\Windows\Content\fonts\titleFont.xnb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\bin\Windows\help\HelpScene1.xnb">
+    <Content Include="Content\bin\Windows\Content\help\HelpScene1.xnb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\bin\Windows\help\HelpScene2.xnb">
+    <Content Include="Content\bin\Windows\Content\help\HelpScene2.xnb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\bin\Windows\images\Archer.xnb">
+    <Content Include="Content\bin\Windows\Content\images\Archer.xnb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\bin\Windows\images\Arrow.xnb">
+    <Content Include="Content\bin\Windows\Content\images\Arrow.xnb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\bin\Windows\images\Background\Background1.xnb">
+    <Content Include="Content\bin\Windows\Content\images\Background\Background1.xnb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\bin\Windows\images\Background\Background2.xnb">
+    <Content Include="Content\bin\Windows\Content\images\Background\Background2.xnb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\bin\Windows\images\Background\Background3.xnb">
+    <Content Include="Content\bin\Windows\Content\images\Background\Background3.xnb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\bin\Windows\images\Background\Background4.xnb">
+    <Content Include="Content\bin\Windows\Content\images\Background\Background4.xnb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\bin\Windows\images\Background\Background5.xnb">
+    <Content Include="Content\bin\Windows\Content\images\Background\Background5.xnb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\bin\Windows\images\Bomb.xnb">
+    <Content Include="Content\bin\Windows\Content\images\Bomb.xnb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\bin\Windows\images\Castle\Castle1.xnb">
+    <Content Include="Content\bin\Windows\Content\images\Castle\Castle1.xnb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\bin\Windows\images\Castle\Castle1Destroyed.xnb">
+    <Content Include="Content\bin\Windows\Content\images\Castle\Castle1Destroyed.xnb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\bin\Windows\images\Castle\Castle2.xnb">
+    <Content Include="Content\bin\Windows\Content\images\Castle\Castle2.xnb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\bin\Windows\images\Castle\Castle2Destroyed.xnb">
+    <Content Include="Content\bin\Windows\Content\images\Castle\Castle2Destroyed.xnb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\bin\Windows\images\Castle\Castle3.xnb">
+    <Content Include="Content\bin\Windows\Content\images\Castle\Castle3.xnb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\bin\Windows\images\Castle\Castle3Destroyed.xnb">
+    <Content Include="Content\bin\Windows\Content\images\Castle\Castle3Destroyed.xnb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\bin\Windows\images\Enemy\MadZombie.xnb">
+    <Content Include="Content\bin\Windows\Content\images\Enemy\MadZombie.xnb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\bin\Windows\images\Enemy\NormalZombie.xnb">
+    <Content Include="Content\bin\Windows\Content\images\Enemy\NormalZombie.xnb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\bin\Windows\images\Enemy\RedBat.xnb">
+    <Content Include="Content\bin\Windows\Content\images\Enemy\RedBat.xnb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\bin\Windows\images\Enemy\Samurai.xnb">
+    <Content Include="Content\bin\Windows\Content\images\Enemy\Samurai.xnb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\bin\Windows\songs\Song.wma">
+    <Content Include="Content\bin\Windows\Content\songs\Song.wma">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\bin\Windows\songs\Song.xnb">
+    <Content Include="Content\bin\Windows\Content\songs\Song.xnb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\bin\Windows\sounds\Explosion.xnb">
+    <Content Include="Content\bin\Windows\Content\sounds\Explosion.xnb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\bin\Windows\sounds\Shoot.xnb">
+    <Content Include="Content\bin\Windows\Content\sounds\Shoot.xnb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
